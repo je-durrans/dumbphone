@@ -1,4 +1,6 @@
-/* this does only ringtone (IF WE HAD ONE) **/
+
+/* this is where we would put our ringtone IF WE HAD ONE **/
+
 import java.io.File;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
