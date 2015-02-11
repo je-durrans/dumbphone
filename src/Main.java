@@ -1,34 +1,71 @@
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import java.util.ArrayList;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 /**
- * Very basic layout of the interface of the 'dumb phone'. Provides all the elements required
- * for the interface, and a method to reset the text set on any of the TextField lines.
- * None of the required functionaliy is assigned to any of the buttons in this version.
- *
- * @author Mustafa Tekman
- * @version 1.0
+ * Created by John on 11/02/2015.
  */
-public class BasicLayout {
+/*
+public class Main {
+    public static void main(String[] args) {
+        Thread t = new Thread(){
+            @Override
+            public void run() {
+                new PlaySound();
+            }
+        };
+        Thread u = new Thread(){
+            @Override
+            public void run() {
+                new RecordSound();
+            }
+        };
+        t.start();
+        u.start();
+    }
+}
+*/
+/*
+public class Main {
+    public static void main(String[] args) {
+        for(int i = 0; i<2; i++) {
+            Thread t = new Thread() {
+                @Override
+                public void run() {
+                    BasicLayout.main(new String[]{});
+                }
+            };
+            t.start();
+        }
+    }
+}
+*/
+import java.awt.TextField;
+        import java.awt.event.ActionEvent;
+        import java.awt.event.ActionListener;
+        import javax.swing.JButton;
+        import javax.swing.JFrame;
+        import java.util.ArrayList;
+
+//very basic layout of the dumb phone, Mustafa, 09.02.15
+
+
+public class Main {
+
 
     public static void main( String[] args ) {
-        final ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
+        final ArrayList<TextField> lines = new ArrayList<TextField>(); //array to store lines
+        final Box calling = new Box();
 
         JFrame window = new JFrame ( "not-so-smartPhone" );
         window.setSize( 405, 500 );
 
-        //declaring the lines
+        //adding the lines
         final TextField line1 = new TextField();  lines.add(line1);
         final TextField line2 = new TextField();  lines.add(line2);
         final TextField line3 = new TextField();  lines.add(line3);
         final TextField line4 = new TextField();  lines.add(line4);
         final TextField line5 = new TextField();  lines.add(line5);
 
-        //declaring the buttons
+        //adding the buttons
         final JButton ok_buttn = new JButton( "OK" );
         final JButton buttn_1 = new JButton ( "1" );
         final JButton buttn_2 = new JButton ( "2 ABC" );
@@ -46,12 +83,19 @@ public class BasicLayout {
         final JButton buttn_0 = new JButton ( "0" );
         final JButton sqar_buttn = new JButton ( "# 123/ABC");
 
-        //adding the event listeners to buttons
+        //adding the event listeners
         ok_buttn.addActionListener( new ActionListener() {
             public void actionPerformed( ActionEvent ev ) {
                 clearLines(lines);
                 line1.setText( "You just pressed the OK button" );
                 line2.setText("That should do something practical in the future");
+                if(calling.b){
+                    if(RecordSound.stopper.isAlive())
+                        RecordSound.stopper.start();
+                }else{
+                    new Thread(){public void run(){new RecordSound();}}.start();
+                }
+                calling.b=!calling.b;
             }
         } );
 
@@ -60,6 +104,8 @@ public class BasicLayout {
                 clearLines(lines);
                 line1.setText( "You just pressed 1" );
                 line2.setText("That should also do something practical in the future");
+                line5.setText("Hey, I'm the fifth line ^^");
+                new Thread(){public void run(){new PlaySound();}}.start();
             }
         } );
 
@@ -68,6 +114,7 @@ public class BasicLayout {
                 clearLines(lines);
                 line1.setText( "You just pressed 2" );
                 line2.setText("That should also do something practical in the future");
+                line4.setText("Hey, I'm the fourth line o.O");
             }
         } );
 
@@ -76,6 +123,7 @@ public class BasicLayout {
                 clearLines(lines);
                 line1.setText( "You just pressed 3" );
                 line2.setText("That should also do something practical in the future");
+                line3.setText("Hey, I'm the third line ;)");
             }
         } );
 
@@ -138,7 +186,7 @@ public class BasicLayout {
         star_buttn.addActionListener( new ActionListener() {
             public void actionPerformed( ActionEvent ev ) {
                 clearLines(lines);
-                line1.setText( "You just pressed the star button" );
+                line1.setText( "You just pressed the star button, it's a star!" );
                 line2.setText("That should also do something practical in the future");
             }
         } );
@@ -147,12 +195,13 @@ public class BasicLayout {
             public void actionPerformed( ActionEvent ev ) {
                 clearLines(lines);
                 line1.setText( "You just pressed the sqaure button" );
-                line2.setText("That should also do something practical in the future");
+                line2.setText("It's not a star, but it's still quite cool");
+                line3.setText("These text box thingies should only be 16 characters o.O");
             }
         } );
 
-        //adding the lines and the buttons to the frame and setting the basic layout of them
-        window.setLayout( null ); //no pre-set layout used in this version
+        //setting the basic layout of buttons and lines
+        window.setLayout( null );
         line1.setBounds   ( 10, 10, 380, 40 ); window.add( line1 );
         line2.setBounds   ( 10, 50, 380, 40 ); window.add( line2 );
         line3.setBounds   ( 10, 90, 380, 40 ); window.add( line3 );
@@ -182,10 +231,7 @@ public class BasicLayout {
         window.setResizable(false);
     }
 
-    /**
-     * Resets any text that has been set on any of the lines
-     * @param lines_array An array holding all the lines (TextFields) within the frame
-     */
+    //function to reset the lines
     public static void clearLines( ArrayList<TextField> lines_array) {
         for ( TextField line : lines_array ) {
             line.setText( " " ) ;
