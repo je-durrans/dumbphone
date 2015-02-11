@@ -4,7 +4,8 @@
 public class Outgoing {
     public static void main(String[] args) {
         new Outgoing(new String[]{"hello", ", ", " ", "world", "!"});
-        }
+    }
+
     public Outgoing(Object o){
         if(o instanceof String[]){
             //Send to phone
