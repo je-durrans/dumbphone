@@ -14,7 +14,8 @@ public class Phonebook {
     }
     
     /**
-     * Adds a contact to the phonebook, unless the contact already exists or the phone number is too short or too long, in which case it returns an error message.
+     * Adds a contact to the phonebook, unless the contact already exists or the phone number 
+     * is too short or too long, in which case it returns an error message.
      */
     public String addContact(String number, String name) {
         
@@ -46,7 +47,8 @@ public class Phonebook {
     }
     
     /**
-     * Edits the number of an already existing contact, unless the contact does not exist, in which case it will display an error message.
+     * Edits the number of an already existing contact, unless the contact does not exist, 
+     * in which case it will display an error message.
      */
     public String editContact(String name, String newNumber){
         
