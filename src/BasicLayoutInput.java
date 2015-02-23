@@ -27,21 +27,29 @@ public class BasicLayoutInput {
   public static long lastClick7 = 10000;
   public static long lastClick8 = 10000;
   public static long lastClick9 = 10000;
-  public static long lastClick0 = 10000;  
+  public static long lastClick0 = 10000;
+  
+  final TextField line1 = new TextField();
+  final TextField line2 = new TextField();
+  final TextField line3 = new TextField();
+  final TextField line4 = new TextField();
+  final TextField line5 = new TextField();
+  
+  final ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
 
   public BasicLayoutInput() {
-    final ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
+    
     //final String whererwe = "main menu";
     
     JFrame window = new JFrame ( "not-so-smartPhone" );
     window.setSize( 405, 500 );
     
     //declaring the lines 
-    final TextField line1 = new TextField();  lines.add(line1);
-    final TextField line2 = new TextField();  lines.add(line2);
-    final TextField line3 = new TextField();  lines.add(line3);
-    final TextField line4 = new TextField();  lines.add(line4);
-    final TextField line5 = new TextField();  lines.add(line5);
+    lines.add(line1);
+    lines.add(line2);
+    lines.add(line3);
+    lines.add(line4);
+    lines.add(line5);
     
     //declaring the buttons
     final JButton ok_buttn = new JButton( "OK" );
@@ -353,4 +361,5 @@ public class BasicLayoutInput {
       }
     }
 
-}
+  
+  }
