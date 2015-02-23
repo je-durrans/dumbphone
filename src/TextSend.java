@@ -23,15 +23,7 @@ public class TextSend {
         content=content+argv[i]+" ";
     }
     writer.print( content+"\r\n" );
-    writer.print( "Host : " + HOST + "\r\n" );
-    writer.print( "Content-Length : 0\r\n" );
-    writer.print( "\r\n" );
     writer.flush();
-
-    int c;
-    while ( ( c = reader.read() ) != -1 ) {
-      System.out.write( c );
-    }
 
     s.close();
   }
