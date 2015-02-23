@@ -7,11 +7,19 @@ import javax.sound.sampled.SourceDataLine;
 
 public class Ringtone {
     
+    /*
+     * These Strings represent the names of the files to be used in each method call.
+     */
+    
     final static String ringtone = "Ringtone.wav";
     final static String happySound = "HappySound.wav";
     final static String sadSound = "SadSound.wav";
     final static String tritone = "Tritone.wav";
     final static int buffer_size = 128000;
+    
+    /*
+     * This method plays the phone's ringtone.
+     */
     
     public static void ringtone() {
         
@@ -47,6 +55,10 @@ public class Ringtone {
         }
     }
     
+    /*
+     * This method plays the phone's happy sound.
+     */
+    
     public static void happySound() {
         
         try {
@@ -81,6 +93,10 @@ public class Ringtone {
         }
     }
     
+    /*
+     * This method plays the phone's sad sound.
+     */
+    
     public static void sadSound() {
         
         try {
@@ -114,6 +130,10 @@ public class Ringtone {
             
         }
     }
+    
+    /*
+     * This method plays the phone's tritone.
+     */
     
     public static void tritone() {
         
