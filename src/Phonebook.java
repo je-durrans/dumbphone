@@ -2,15 +2,14 @@ import java.util.*;
 
 public class Phonebook {
     
-    int total;
-    Map<String,String> phonebook = new HashMap<String,String>();
+    private int total;
+    private Map<String,String> phonebook = new HashMap<String,String>();
     
     /** 
      * Initialises the phonebook and adds the first contact, the phone owner.
      */
-    public Phonebook(String myNumber) {
-        phonebook.put("Me", myNumber);
-        total = 1;
+    public Phonebook() {
+        total = 0;
     }
     
     /**
@@ -23,7 +22,7 @@ public class Phonebook {
             return "Contact already exists";
         }
         
-        if (number.length() > 11 | number.length() < 3) {
+        if (number.length() > 15 | number.length() < 7) {
             return "Invalid number";
         }
         
@@ -56,7 +55,7 @@ public class Phonebook {
             return "Contact does not exist";
         }
         
-        if (newNumber.length() > 11 | newNumber.length() < 3) {
+        if (newNumber.length() > 15 | newNumber.length() < 7) {
             return "Invalid number";
         }
         
@@ -65,4 +64,3 @@ public class Phonebook {
     }
     
 }
-
