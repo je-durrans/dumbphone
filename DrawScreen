@@ -1,0 +1,42 @@
+
+public DrawScreen{
+void off(){
+        BasicLayout.clearLines(phone.lines);
+    }
+
+    void setPasscode(){
+        BasicLayout.clearLines(phone.lines);
+        phone.line1.setText("123");
+        phone.line2.setText("Set passcode");
+    }
+
+    void enterPasscode() {
+        BasicLayout.clearLines(phone.lines);
+        phone.line1.setText("123");
+        phone.line2.setText("Enter passcode");
+    }
+
+    void mainMenu(){}
+
+    void contactsMenu(){}
+
+    void addContact(){}
+
+    void removeContact(){}
+
+    void textsMenu(){}
+
+    void whoText(){}
+
+    void enterText(){}
+
+    void receiveText(){}
+
+    void callsMenu(){}
+
+    void whoCall(){}
+
+    void recordCall(){}
+
+    void receiveCall(){}
+    }
