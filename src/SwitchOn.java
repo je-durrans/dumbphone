@@ -6,13 +6,13 @@ import java.io.*;
 
 
 public class SwitchOn extends JFrame implements MouseListener {
-
-    //clearLines(lines);
-    /*boolean phoneOn = false; make this into if statement when putting into the main method*/
+    /*boolean phoneOn; make this into if statement when putting into the main method*/
     long pressedTime;
     long timeClicked;
+    boolean phoneOn;
     String password;
     String pass;
+
 
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
@@ -23,25 +23,28 @@ public class SwitchOn extends JFrame implements MouseListener {
     public void mousePressed(MouseEvent e) {
         pressedTime = System.currentTimeMillis();
     }
+    
     public void mouseReleased(MouseEvent e) {
         timeClicked = new Date().getTime() - pressedTime;
-        if (timeClicked >= 2000) {
+        if (timeClicked >= 2000 && !phoneOn) {
             //Ringtone.happySound();
-            System.out.println("The phone is now switched on");
             boolean phoneOn = true;
             InputStreamReader in = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(in);
+            BasicLayoutInput layout = new BasicLayoutInput();
             try {
                     if (password == null) {
-                        System.out.println("Please set password: ");
+                        layout.line1.setText("Set password: ");
                         password = br.readLine();
                         //go to main menu?
                     } else {
+                        layout.line1.setText("Enter password: ");
                         while (!pass.equals(password)) {
-                            System.out.println("Please enter password: ");
                             pass = br.readLine();
+                            //Ringtone.sadSound();
+                            layout.clearLines(lines);
                             if (pass.equals(password)) {
-                                System.out.println("Well done, WELCOME");
+                                //Ringtone.happySound();
                                 //go to main menu?
                             }
                         }
