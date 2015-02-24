@@ -8,7 +8,8 @@ import javax.sound.sampled.SourceDataLine;
 /**
 * A class playing sound depending on the Event that called it
 * 
-* @author Kate Moksina / Luke Simmons 
+* @author Kate Moksina
+* @editor Luke Simmons
 * @version 1.0
 */
 
