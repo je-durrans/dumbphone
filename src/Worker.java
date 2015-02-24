@@ -6,6 +6,13 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+* Assistant class for network communication when sending and receiving texts
+* 
+* @author Kate Moksina 
+* @version 1.0
+*/
+
 public class Worker implements Runnable {
   private Socket s;
 
