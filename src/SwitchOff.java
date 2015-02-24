@@ -2,6 +2,14 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.*;
 
+/**
+* A class that switches the dumbphone off if it has been on before
+* after holding the OK button down for 2 seconds (or over)
+* 
+* @author Kate Moksina 
+* @version 1.0
+*/
+
 
 public class SwitchOff extends JFrame implements MouseListener {
         /*boolean phoneOn; make this into if statement when putting into the main method*/
