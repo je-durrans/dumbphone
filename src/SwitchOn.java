@@ -37,7 +37,7 @@ public class SwitchOn extends JFrame implements MouseListener {
     public void mouseReleased(MouseEvent e) {
         timeClicked = new Date().getTime() - pressedTime;
         if (timeClicked >= 2000 && !phoneOn) {
-            //Ringtone.happySound();
+            //Ringtone.helloSound();
             boolean phoneOn = true;
             InputStreamReader in = new InputStreamReader(System.in);
             BufferedReader br = new BufferedReader(in);
