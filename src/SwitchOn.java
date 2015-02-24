@@ -4,9 +4,18 @@ import java.awt.*;
 import java.util.*;
 import java.io.*;
 
+/**
+* A class that switches on the phone if OK button is held down for over 2 seconds
+* It then plays happySoud and asks to Set/Enter password, depending on whether
+* the password has already been set.
+* 
+* @author Kate Moksina 
+* @version 1.0
+*/
+
 
 public class SwitchOn extends JFrame implements MouseListener {
-    /*boolean phoneOn; make this into if statement when putting into the main method*/
+    /*boolean phoneOn; make this into if statement when putting into the main dumbphone method*/
     long pressedTime;
     long timeClicked;
     boolean phoneOn;
@@ -24,6 +33,7 @@ public class SwitchOn extends JFrame implements MouseListener {
         pressedTime = System.currentTimeMillis();
     }
     
+    @Override
     public void mouseReleased(MouseEvent e) {
         timeClicked = new Date().getTime() - pressedTime;
         if (timeClicked >= 2000 && !phoneOn) {
