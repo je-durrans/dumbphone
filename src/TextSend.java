@@ -6,6 +6,13 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+* A class sending input text up to 64 characters between server and client 
+* 
+* @author Kate Moksina 
+* @version 1.0
+*/
+
 public class TextSend {
   final static String HOST  =  "127.0.0.1"; /* localhost */
   final static int    PORT  =  8888;
@@ -20,7 +27,9 @@ public class TextSend {
     PrintWriter writer = new PrintWriter( out );
     String content="";
     for(int i = 0; i<argv.length;i++){
+        while(content.length()<64){
         content=content+argv[i]+" ";
+    }
     }
     writer.print( content+"\r\n" );
     writer.flush();
