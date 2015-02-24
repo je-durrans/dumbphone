@@ -52,7 +52,7 @@ public class SwitchOn extends JFrame implements MouseListener {
                         while (!pass.equals(password)) {
                             pass = br.readLine();
                             //Ringtone.sadSound();
-                            layout.clearLines(lines);
+                            BasicLayoutInput.clearLines(layout.lines);
                             if (pass.equals(password)) {
                                 //Ringtone.happySound();
                                 //go to main menu?
