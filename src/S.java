@@ -1,23 +1,20 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import java.util.ArrayList;
 
-//* This thing works. It's a mouse listener on a button with a timer and it works.
+/* This thing works. It's a mouse listener on a button with a timer and it works.
 * just gimme 5 years to put password and such in it
 */
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+import java.util.*;
+import java.io.*;
 
 public class S extends JFrame implements MouseListener{
-   //static private JFrame window = new JFrame ( "test" );
    private static TextField line1 = new TextField();
    public static JButton ok_buttn = new JButton("OK");
    public long click;
    public long unclick;
+   String password;
+   String pass;
    public S() {
         setTitle( "test" );
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -34,28 +31,48 @@ public class S extends JFrame implements MouseListener{
 
    public static void main(String[] args){
        S window = new S();
-      
    }
 
-      public void mouseClicked(MouseEvent e) {
+   public void mouseClicked(MouseEvent e) {
         }
 
-      public void mousePressed(MouseEvent e) {
-          click = System.currentTimeMillis();
-          line1.setText("yo");
+   public void mousePressed(MouseEvent e) {
+       click = System.currentTimeMillis();
       }
 
-      public void mouseReleased(MouseEvent e) {
-          unclick = System.currentTimeMillis() - click;
-          line1.setText("hi");
-          if (unclick >= 2000) {
-              line1.setText("hey");
-            }
-      }
-
-      public void mouseEntered(MouseEvent e) {
-      }
-
-      public void mouseExited(MouseEvent e) {
-      }
+   public void mouseReleased(MouseEvent e) {
+        unclick = new Date().getTime() - click;
+        if (unclick >= 2000) {
+            //Ringtone.happySound();
+            InputStreamReader in = new InputStreamReader(System.in);
+            BufferedReader br = new BufferedReader(in);
+            BasicLayout layout = new BasicLayout();
+            try {
+                    if (password == null) {
+                        //layout.
+                        line1.setText("Set password: ");
+                        password = br.readLine();
+                        //go to main menu?
+                    } else {
+                        //layout.
+                        line1.setText("Enter password: ");
+                        while (!pass.equals(password)) {
+                            pass = br.readLine();
+                            //Ringtone.sadSound();
+                            //layout.clearLines(lines);
+                            if (pass.equals(password)) {
+                                //Ringtone.happySound();
+                                //go to main menu?
+                            }
+                        }
+                    }
+            } catch(IOException ex) {}
+        }
    }
+
+   public void mouseEntered(MouseEvent e) {
+      }
+
+   public void mouseExited(MouseEvent e) {
+      }
+}
