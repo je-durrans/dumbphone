@@ -13,8 +13,10 @@ import java.util.ArrayList;
 * @author Mustafa Tekman 
 * @version 1.0
 */
+
 public class BasicLayoutInput {
   public static String input = "";
+  public String inputType = "lowerCase"; //initiate the input to be lower case
   //lastClick variables hold values relating to the time the buttons they correspond to were last clicked on. They are instantiated at
   //a randomly high value of 10000 so that the first if clause in the actionPerformed method in the event
   //listeners of the buttons do not true and hence the counter is instantiated at 0. 
@@ -63,7 +65,7 @@ public class BasicLayoutInput {
     
     final JButton buttn_7 = new JButton ( "7 PQRS" );
     final JButton buttn_8 = new JButton ( "8 TUV" );
-    final JButton buttn_9 = new JButton ( "9 XYZ" );
+    final JButton buttn_9 = new JButton ( "9 WXYZ" );
     
     final JButton star_buttn = new JButton ( "* DEL" );
     final JButton buttn_0 = new JButton ( "0" );
@@ -101,20 +103,36 @@ public class BasicLayoutInput {
     });
     
     buttn_2.addActionListener( new ActionListener() {
+        
         private int count = 0;
-        private String[] values2 = {"2", "A", "B", "C"};
+        private String[] values2 = { "A", "B", "C", "a" , "b", "c", "2"};
+        
         public void actionPerformed( ActionEvent ev ) {
             clearLines(lines);
             lastClick1 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
             long now = System.currentTimeMillis();
+            
             if (now - lastClick2 < 2000) {
                 count++;
-                if (count >= values2.length) {
-                    count = 0;
+                
+                switch (inputType) {
+                    case "upperCase": if(count >= 3) { count = 0; }
+                                      break;
+                    case "lowerCase": if(count >= 6) { count = 3; }
+                                      break;
+                    case "numeric":   if(count >= values2.length) { count = 6; }
                 }
+
                 input = input.substring(0, (input.length() - 1)) + values2[count];
             } else {
-                count = 0;
+                switch (inputType) {
+                    case "upperCase": count = 0; 
+                                      break;
+                    case "lowerCase": count = 3; 
+                                      break;
+                    case "numeric":   count = 6; 
+                }
+                
                 input += values2[count];
             }
             line2.setText(input);
@@ -124,21 +142,34 @@ public class BasicLayoutInput {
     } );
     
     buttn_3.addActionListener( new ActionListener() {
-        
+   
         private int count = 0;
-        private String[] values3 = {"3", "D", "E", "F"};
+        private String[] values3 = { "D", "E", "F", "d" , "e", "f", "3"};
         public void actionPerformed( ActionEvent ev ) {
             clearLines(lines);
             lastClick1 = 10000; lastClick2 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
             long now = System.currentTimeMillis();
             if (now - lastClick3 < 2000) {
                 count++;
-                if (count >= values3.length) {
-                    count = 0;
+           
+                switch (inputType) {
+                    case "upperCase": if(count >= 3) { count = 0; }
+                                      break;
+                    case "lowerCase": if(count >= 6) { count = 3; }
+                                      break;
+                    case "numeric":   if(count >= values3.length) { count = 6; }
                 }
+
                 input = input.substring(0, (input.length() - 1)) + values3[count];
             } else {
-                count = 0;
+                switch (inputType) {
+                    case "upperCase": count = 0; 
+                                      break;
+                    case "lowerCase": count = 3; 
+                                      break;
+                    case "numeric":   count = 6; 
+                }
+                
                 input += values3[count];
             }
             line2.setText(input);
@@ -148,20 +179,33 @@ public class BasicLayoutInput {
     
     buttn_4.addActionListener( new ActionListener() {
         private int count = 0;
-        private String[] values4 = {"4", "G", "H", "I"};
+        private String[] values4 = { "G", "H", "I" , "g" , "h" , "i", "4" };
         public void actionPerformed( ActionEvent ev ) {
             clearLines(lines);
             lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
             long now = System.currentTimeMillis();
             if (now - lastClick4 < 2000) {
                 count++;
-                if (count >= values4.length) {
-                    count = 0;
+                
+                switch (inputType) {
+                    case "upperCase": if(count >= 3) { count = 0; }
+                                      break;
+                    case "lowerCase": if(count >= 6) { count = 3; }
+                                      break;
+                    case "numeric":   if(count >= values4.length) { count = 6; }
                 }
+
                 input = input.substring(0, (input.length() - 1)) + values4[count];
             } else {
-            count = 0;
-            input += values4[count];
+                switch (inputType) {
+                    case "upperCase": count = 0; 
+                                      break;
+                    case "lowerCase": count = 3; 
+                                      break;
+                    case "numeric":   count = 6; 
+                }
+                
+                input += values4[count];
             }
             line2.setText(input);
             lastClick4 = System.currentTimeMillis();
@@ -170,21 +214,35 @@ public class BasicLayoutInput {
 
     buttn_5.addActionListener( new ActionListener() {
         private int count = 0;
-        private String[] values5 = {"5", "J", "K", "L"};
+        private String[] values5 = { "J", "K", "L" , "j" , "k" , "l", "5" };
         public void actionPerformed( ActionEvent ev ) {
             clearLines(lines);
             lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
             long now = System.currentTimeMillis();
+            
             if (now - lastClick5 < 2000) {
                 count++;
-                if (count >= values5.length) {
-                    count = 0;
+                
+                switch (inputType) {
+                    case "upperCase": if(count >= 3) { count = 0; }
+                                      break;
+                    case "lowerCase": if(count >= 6) { count = 3; }
+                                      break;
+                    case "numeric":   if(count >= values5.length) { count = 6; }
                 }
+
                 input = input.substring(0, (input.length() - 1)) + values5[count];
             } else {
-                count = 0;
+                switch (inputType) {
+                    case "upperCase": count = 0; 
+                                      break;
+                    case "lowerCase": count = 3; 
+                                      break;
+                    case "numeric":   count = 6; 
+                }
+                
                 input += values5[count];
-            }
+            } 
             line2.setText(input);
             lastClick5 = System.currentTimeMillis();
         }
@@ -192,20 +250,33 @@ public class BasicLayoutInput {
     
     buttn_6.addActionListener( new ActionListener() {
         private int count = 0;
-        private String[] values6 = {"6", "M", "N", "O"};
+        private String[] values6 = { "M", "N", "O", "m", "n", "o", "6"};
         public void actionPerformed( ActionEvent ev ) {
             clearLines(lines);
             lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
             long now = System.currentTimeMillis();
             if (now - lastClick6 < 2000) {
                 count++;
-                if (count >= values6.length) {
-                    count = 0;
+                
+                switch (inputType) {
+                    case "upperCase": if(count >= 3) { count = 0; }
+                                      break;
+                    case "lowerCase": if(count >= 6) { count = 3; }
+                                      break;
+                    case "numeric":   if(count >= values6.length) { count = 6; }
                 }
+
                 input = input.substring(0, (input.length() - 1)) + values6[count];
             } else {
-                count = 0;
-                input += values6[count];
+                switch (inputType) {
+                    case "upperCase": count = 0; 
+                                      break;
+                    case "lowerCase": count = 3; 
+                                      break;
+                    case "numeric":   count = 6; 
+                }
+                
+                input +=  values6[count];
             }
             line2.setText(input);
             lastClick6 = System.currentTimeMillis();
@@ -214,21 +285,35 @@ public class BasicLayoutInput {
     
     buttn_7.addActionListener( new ActionListener() {
         private int count = 0;
-        private String[] values7 = {"7", "P", "Q", "R", "S"};
+        private String[] values7 = { "P", "Q", "R", "S", "p", "q", "r", "s", "7"};
     public void actionPerformed( ActionEvent ev ) {
         clearLines(lines);
         lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
         long now = System.currentTimeMillis();
         if (now - lastClick7 < 2000) {
             count++;
-            if (count >= values7.length) {
-                count = 0;
-            }
-            input = input.substring(0, (input.length() - 1)) + values7[count];
+            
+            switch (inputType) {
+                case "upperCase": if(count >= 4) { count = 0; }
+                                  break;
+                case "lowerCase": if(count >= 7) { count = 3; }
+                                  break;
+                case "numeric":   if(count >= values7.length) { count = 8; }
+                }
+
+                input = input.substring(0, (input.length() - 1)) + values7[count];
         } else {
-            count = 0;
+            switch (inputType) {
+                case "upperCase": count = 0; 
+                                  break;
+                case "lowerCase": count = 4; 
+                                  break;
+                case "numeric":   count = 8; 
+            }
+            
             input += values7[count];
         }
+        
         line2.setText(input);
         lastClick7 = System.currentTimeMillis();
     }
@@ -236,19 +321,32 @@ public class BasicLayoutInput {
     
     buttn_8.addActionListener( new ActionListener() {
         private int count = 0;
-        private String[] values8 = {"8", "T", "U", "V"};
+        private String[] values8 = { "T", "U", "V" , "t" , "u", "v", "8"};
     public void actionPerformed( ActionEvent ev ) {
         clearLines(lines);
         lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
         long now = System.currentTimeMillis();
         if (now - lastClick8 < 2000) {
             count++;
-            if (count >= values8.length) {
-                count = 0;
+            
+            switch (inputType) {
+                case "upperCase": if(count >= 3) { count = 0; }
+                                  break;
+                case "lowerCase": if(count >= 6) { count = 3; }
+                                  break;
+                case "numeric":   if(count >= values8.length) { count = 6; }
             }
-            input = input.substring(0, (input.length() - 1)) + values8[count];
+
+                input = input.substring(0, (input.length() - 1)) + values8[count];
         } else {
-            count = 0;
+            switch (inputType) {
+                case "upperCase": count = 0; 
+                                  break;
+                case "lowerCase": count = 3; 
+                                  break;
+                case "numeric":   count = 6; 
+            }
+            
             input += values8[count];
         }
         line2.setText(input);
@@ -258,19 +356,32 @@ public class BasicLayoutInput {
     
     buttn_9.addActionListener( new ActionListener() {
         private int count = 0;
-        private String[] values9 = {"9", "W", "X", "Y", "Z"};
+        private String[] values9 = { "W", "X", "Y", "Z", "w", "x", "y", "z", "9"};
     public void actionPerformed( ActionEvent ev ) {
         clearLines(lines);
         lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick0 = 10000;  
         long now = System.currentTimeMillis();
         if (now - lastClick9 < 2000) {
             count++;
-            if (count >= values9.length) {
-                count = 0;
+            
+            switch (inputType) {
+                case "upperCase": if(count >= 4) { count = 0; }
+                                  break;
+                case "lowerCase": if(count >= 8) { count = 4; }
+                                  break;
+                case "numeric":   if(count >= values9.length) { count = 8; }
             }
-            input = input.substring(0, (input.length() - 1)) + values9[count];
+
+                input = input.substring(0, (input.length() - 1)) + values9[count];
         } else {
-            count = 0;
+            switch (inputType) {
+                case "upperCase": count = 0; 
+                                  break;
+                case "lowerCase": count = 4; 
+                                  break;
+                case "numeric":   count = 8; 
+        
+                }
             input += values9[count];
         }
         line2.setText(input);
@@ -287,13 +398,21 @@ public class BasicLayoutInput {
         long now = System.currentTimeMillis();
         if (now - lastClick0 < 2000) {
             count++;
-            if (count >= values0.length) {
-                count = 0;
+            if ((inputType.equals("loweCase")) || (inputType.equals("upperCase"))) {
+                if (count >= 1) {
+                    count = 0;
+                } 
+            } else if (inputType.equals("numeric")) {
+                if (count >= values0.length) { count = 1; }
             }
             input = input.substring(0, (input.length() - 1)) + values0[count];
         } else {
+            if (inputType.equals("loweCase") || inputType.equals("upperCase")) {
             count = 0;
+             } else if (inputType.equals("numeric")) { count = 1; }
+             
             input += values0[count];
+        
         }
         line2.setText(input);
         lastClick0 = System.currentTimeMillis();
@@ -312,10 +431,18 @@ public class BasicLayoutInput {
     } );
 
     sqar_buttn.addActionListener( new ActionListener() {
+        private int count = 0;
+        private String[] valuessq = {"lowerCase" , "upperCase", "numeric" };
+        
         public void actionPerformed( ActionEvent ev ) {
-            clearLines(lines);
-            line1.setText( "You just pressed the square button" );
-            line2.setText("That should also do something practical in the future");     
+            //clearLines(lines); --no need for this anymore
+            lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
+            count++;
+            if (count >= valuessq.length) {
+                count = 0;
+            }
+            inputType = valuessq[count];
+            line1.setText(inputType);     
         }
     } );
     
