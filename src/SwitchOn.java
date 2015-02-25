@@ -65,7 +65,7 @@ public class SwitchOn implements MouseListener{
                         }
                     }
                 }
-            } catch(IOException ex) {}
+            } catch(Exception ex) {}
         }
     }
 
