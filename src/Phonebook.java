@@ -1,5 +1,12 @@
 import java.util.*;
 
+/**
+ * Keeps track of contacts in the phonebook and allows the user to add and remove them.
+ * 
+ * @author Luke Simmons
+ * @version 25/02/2015
+ */
+
 public class Phonebook {
     
     private int total;
@@ -43,24 +50,6 @@ public class Phonebook {
         phonebook.remove(name);
         total--;
         return "Deleted" + name;
-    }
-    
-    /**
-     * Edits the number of an already existing contact, unless the contact does not exist, 
-     * in which case it will display an error message.
-     */
-    public String editContact(String name, String newNumber){
-        
-        if (phonebook.containsKey(name) == false) {
-            return "Contact does not exist";
-        }
-        
-        if (newNumber.length() > 15 | newNumber.length() < 7) {
-            return "Invalid number";
-        }
-        
-        phonebook.put(name,newNumber);
-        return name + "'s number changed";
     }
     
 }
