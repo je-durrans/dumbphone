@@ -1,0 +1,281 @@
+import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+/**
+ * Very basic layout of the interface of the 'dumb phone'. Provides all the elements required
+ * for the interface, and a method to reset the text set on any of the TextField lines.
+ * None of the required functionaliy is assigned to any of the buttons in this version.
+ *
+ * @author Mustafa Tekman
+ * @version 1.0
+ */
+public class BasicLayout {
+
+    final ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
+    State state = State.OFF;
+    int kbState = 0; //(0)123, (1)abc, (2)ABC
+    boolean passcodeSet=false;
+    boolean target_is_name = true;
+    SwitchOn s = new SwitchOn(System.currentTimeMillis());
+    //declaring the lines
+    final TextField line1 = new TextField();
+    final TextField line2 = new TextField();
+    final TextField line3 = new TextField();
+    final TextField line4 = new TextField();
+    final TextField line5 = new TextField();
+
+    public BasicLayout() {
+        final ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
+
+        JFrame window = new JFrame ( "not-so-smartPhone" );
+        window.setSize( 405, 500 );
+
+        //declaring the lines
+        lines.add(line1);
+        lines.add(line2);
+        lines.add(line3);
+        lines.add(line4);
+        lines.add(line5);
+
+        //declaring the buttons
+        final JButton ok_buttn = new JButton( "OK" );
+        final JButton buttn_1 = new JButton ( "1" );
+        final JButton buttn_2 = new JButton ( "2 ABC" );
+        final JButton buttn_3 = new JButton ( "3 DEF" );
+
+        final JButton buttn_4 = new JButton ( "4 GHI" );
+        final JButton buttn_5 = new JButton ( "5 JKL" );
+        final JButton buttn_6 = new JButton ( "6 MNO" );
+
+        final JButton buttn_7 = new JButton ( "7 PQRS" );
+        final JButton buttn_8 = new JButton ( "8 TUV" );
+        final JButton buttn_9 = new JButton ( "9 WXYZ" );
+
+        final JButton star_buttn = new JButton ( "* DEL" );
+        final JButton buttn_0 = new JButton ( "0" );
+        final JButton sqar_buttn = new JButton ( "# 123/ABC");
+
+        //adding the event listeners to buttons
+        ok_buttn.addActionListener( new ActionListener() {
+            public void actionPerformed( ActionEvent ev ) {
+                //if(state==State.OFF){
+                    //do switchOn thing
+                    //long pressedTime = System.currentTimeMillis();
+                    //new SwitchOn(pressedTime);
+                //}else{
+                    state = ButtonFunctions.pressOK(state);
+                    display();
+                //}
+            }
+        } );
+        /*ok_buttn.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent ev) {
+                if (ok_buttn.isSelected()) {
+                    System.out.println("down2");
+                    long pressedTime = System.currentTimeMillis();
+                    new SwitchOn(pressedTime);
+                } else {
+                    System.out.println("up");
+                    state = ButtonFunctions.pressOK(state);
+                }
+            }
+        });*/
+
+        buttn_1.addActionListener( new ActionListener() {
+            private int count = 0; //counts the number of consequence presses of the button to decide which character held by the button is to be inputted
+            private String[] values1 = {"1", "?", "/", "*", "#"};
+            public void actionPerformed( ActionEvent ev ) {
+                state = ButtonFunctions.press1(state, count, values1);
+                display();
+            }
+        } );
+
+        buttn_2.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values2 = { "A", "B", "C", "a" , "b", "c", "2"};
+            public void actionPerformed( ActionEvent ev ) {
+                state = ButtonFunctions.press2(state, count, values2);
+                display();
+            }
+        } );
+
+        buttn_3.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values3 = { "D", "E", "F", "d" , "e", "f", "3"};
+            public void actionPerformed( ActionEvent ev ) {
+                State newState = ButtonFunctions.press3(state, count, values3);
+                if(newState==null){
+
+                }else{
+                    state=newState;
+                }
+                display();
+            }
+        } );
+
+        buttn_4.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values4 = { "G", "H", "I" , "g" , "h" , "i", "4" };
+            public void actionPerformed( ActionEvent ev ) {
+                state = ButtonFunctions.press4(state, count, values4);
+                display();
+            }
+        } );
+
+        buttn_5.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values5 = { "J", "K", "L" , "j" , "k" , "l", "5" };
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressOther(state, 5, count, values5);
+                display();
+            }
+        } );
+
+        buttn_6.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values6 = { "M", "N", "O", "m", "n", "o", "6"};
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressOther(state, 6, count, values6);
+                display();
+            }
+        } );
+
+        buttn_7.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values7 = { "P", "Q", "R", "S", "p", "q", "r", "s", "7"};
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressOther(state, 7, count, values7);
+                display();
+            }
+        } );
+
+        buttn_8.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values8 = { "T", "U", "V" , "t" , "u", "v", "8"};
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressOther(state, 8, count, values8);
+                display();
+            }
+        } );
+
+        buttn_9.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values9 = { "W", "X", "Y", "Z", "w", "x", "y", "z", "9"};
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressOther(state, 9, count, values9);
+                display();
+            }
+        } );
+
+        buttn_0.addActionListener( new ActionListener() {
+            private int count = 0;
+            private String[] values0 = {" ","0"};
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressOther(state, 0, count, values0);
+                display();
+            }
+        } );
+
+        star_buttn.addActionListener( new ActionListener() {
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressStar(state);
+                display();
+            }
+        } );
+
+        sqar_buttn.addActionListener( new ActionListener() {
+            public void actionPerformed( ActionEvent ev ) {
+                ButtonFunctions.pressHash(state);
+                display();
+            }
+        } );
+
+        //adding the lines and the buttons to the frame and setting the basic layout of them
+        window.setLayout( null ); //no pre-set layout used in this version
+        line1.setBounds   ( 10, 10, 380, 40 ); window.add( line1 );
+        line2.setBounds   ( 10, 50, 380, 40 ); window.add( line2 );
+        line3.setBounds   ( 10, 90, 380, 40 ); window.add( line3 );
+        line4.setBounds   ( 10, 130, 380, 40 ); window.add( line4 );
+        line5.setBounds   ( 10, 170, 380, 40 ); window.add( line5 );
+
+        ok_buttn.setBounds( 180, 215, 70, 40); window.add( ok_buttn );
+        buttn_1.setBounds ( 10,  260, 127, 30 ); window.add( buttn_1 );
+        buttn_2.setBounds ( 137, 260, 127, 30 ); window.add( buttn_2 );
+        buttn_3.setBounds ( 264, 260, 127, 30 ); window.add( buttn_3 );
+
+        buttn_4.setBounds ( 10,  290, 127, 30 ); window.add( buttn_4 );
+        buttn_5.setBounds ( 137, 290, 127, 30 ); window.add( buttn_5 );
+        buttn_6.setBounds ( 264, 290, 127, 30 ); window.add( buttn_6 );
+
+        buttn_7.setBounds ( 10,  320, 127, 30 ); window.add( buttn_7 );
+        buttn_8.setBounds ( 137, 320, 127, 30 ); window.add( buttn_8 );
+        buttn_9.setBounds ( 264, 320, 127, 30 ); window.add( buttn_9 );
+
+        buttn_0.setBounds    ( 137, 350, 127, 30 ); window.add( buttn_0 );
+        star_buttn.setBounds ( 10,  350, 127, 30 ); window.add( star_buttn );
+        sqar_buttn.setBounds ( 264, 350, 127, 30 ); window.add( sqar_buttn );
+
+
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
+        window.setResizable(false);
+    }
+
+    /**
+     * Resets any text that has been set on any of the lines
+     * @param lines_array An array holding all the lines (TextFields) within the frame
+     */
+    public static void clearLines( ArrayList<TextField> lines_array) {
+        for ( TextField line : lines_array ) {
+            line.setText( " " ) ;
+        }
+
+    }
+
+    private void display(){
+        switch(state){
+            case OFF:
+                Display.switchOffDisplay(this);
+                break;
+            case MAIN_MENU:
+                Display.mainMenuDisplay(this);
+                break;
+            case CONTACTS_MENU:
+                Display.contactsMenuDisplay(this);
+                break;
+            case ADD_CONTACT:
+                Display.addContactDisplay(this);
+                break;
+            case REMOVE_CONTACT:
+                Display.removeContactDisplay(this);
+                break;
+            case TEXTS_MENU:
+                Display.textsMenuDisplay(this);
+                break;
+            case WHO_TO_TEXT:
+                Display.whoTextDisplay(this);
+                break;
+            case ENTER_TEXT:
+                Display.enterTextDisplay(this);
+                break;
+            case RECEIVE_TEXT:
+                Display.receiveTextDisplay(this);
+                break;
+            case CALLS_MENU:
+                Display.callsMenuDisplay(this);
+                break;
+            case WHO_TO_CALL:
+                Display.whoCallDisplay(this);
+                break;
+            case RECORD_CALL:
+            case RECEIVE_CALL:
+                Display.receiveCallDisplay(this); //these two look the same
+                break;
+        }
+    }
+}
