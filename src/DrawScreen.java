@@ -7,27 +7,28 @@
 
 public class Display {
 
-    //BasicLayoutInput screen = new BasicLayoutInput();
-
     static void setPasscodeDisplay(BasicLayout screen) {  //Display shown when setting the passcode.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
         screen.line2.setText("Set passcode");
+        screen.line3.setText("");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
     static void enterPasscodeDisplay(BasicLayout screen) {  //Display shown when entering the passcode.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
         screen.line2.setText("Enter passcode");
+        screen.line3.setText("");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
     static void mainMenuDisplay(BasicLayout screen) {  //Display shown when at the main menu.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
         screen.line2.setText("1. Calls");
         screen.line3.setText("2. Texts");
@@ -38,26 +39,27 @@ public class Display {
 
     static void contactsMenuDisplay(BasicLayout screen) {  //Display shown when at the contacts menu.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
         screen.line2.setText("1. Add");
         screen.line3.setText("2. Remove");
         screen.line4.setText("3. Exit");
+        screen.line5.setText("");
 
     }
 
     static void addContactDisplay(BasicLayout screen) {  //Display shown when adding a contact.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
         screen.line2.setText("Enter name");
         screen.line3.setText("Enter number");
+        screen.line4.setText("");
+        screen.line5.setText("");
+        
 
     }
 
     static void removeContactDisplay(BasicLayout screen) {  //Display shown when removing a contact.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
         screen.line2.setText("Enter name");
 
@@ -65,7 +67,6 @@ public class Display {
 
     static void textsMenuDisplay(BasicLayout screen) {  //Display shown when at the texting menu.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
         screen.line2.setText("1. Send");
         screen.line3.setText("2. Receive");
@@ -75,58 +76,71 @@ public class Display {
 
     static void whoTextDisplay(BasicLayout screen) {  //Display shown when asked who to text.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
         screen.line2.setText("Enter name");
         screen.line3.setText("Enter number");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
     static void enterTextDisplay(BasicLayout screen) {  //Display shown when entering the text contents.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
         screen.line2.setText("Enter text");
+        screen.line3.setText("");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
     static void receiveTextDisplay(BasicLayout screen) {  //Display shown when accessing a text.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
+        screen.line2.setText("");
+        screen.line3.setText("");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
     static void callsMenuDisplay(BasicLayout screen) {  //Display shown when at the calls menu.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
         screen.line2.setText("1. Make");
         screen.line3.setText("2. Answer");
         screen.line4.setText("3. Exit");
+        screen.line5.setText("");
 
     }
 
     static void whoCallDisplay(BasicLayout screen) {  //Display shown when asked who to call.
 
-        BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
         screen.line2.setText("Enter name");
         screen.line3.setText("Enter number");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
     static void receiveCallDisplay(BasicLayout screen) {  //Display shown when answering a call.
 
-        BasicLayoutInput.clearLines(screen.lines);
+        screen.line1.setText("");
+        screen.line2.setText("");
+        screen.line3.setText("");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
-
-
     static void switchOffDisplay(BasicLayout screen) {  //Display shown when switching off the phone.
 
-        BasicLayoutInput.clearLines(screen.lines);
+        screen.line1.setText("");
+        screen.line2.setText("");
+        screen.line3.setText("");
+        screen.line4.setText("");
+        screen.line5.setText("");
 
     }
 
