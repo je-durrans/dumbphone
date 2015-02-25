@@ -1,0 +1,280 @@
+/**
+ * Created by John on 23/02/2015.
+ */
+public class ButtonFunctions {
+    //state = off, setPasscode, enterPasscode, mainMenu, contactsMenu, addContact, removeContact,
+    //      | textsMenu, whoText, enterText, receiveText, callsMenu, whoCall, recordCall, receiveCall
+    int kbState = 0; //(0)123, (1)abc, (2)ABC
+    boolean passcodeSet=false;
+    BasicLayout phone = new BasicLayout();
+    static boolean target_is_name = true;
+    static Box calling = new Box();
+
+    /*public static void main(String[] args) {
+        ButtonFunctions s = new ButtonFunctions();
+        s.pressOK();
+    }*/
+    public static void main(String[] args) {
+        BasicLayout b = new BasicLayout();
+    }
+    static State pressOK(State state){
+        switch(state){
+
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+            case WHO_TO_TEXT:
+            case WHO_TO_CALL:
+                if(target_is_name){
+                    target_is_name=false;
+                    return state;
+                }else{
+                    target_is_name=true;
+                    switch(state){
+                        case ADD_CONTACT:
+                            //addContact();
+                            return State.MAIN_MENU;
+                        case REMOVE_CONTACT:
+                            //removeContact();
+                            return State.MAIN_MENU;
+                        case WHO_TO_TEXT:
+                            //sendText();
+                            return State.ENTER_TEXT;
+                        case WHO_TO_CALL:
+                            //sendCall();
+                            return State.RECORD_CALL;
+                    }
+                }
+
+            case ENTER_TEXT:
+                //sendText();
+                return State.MAIN_MENU;
+
+            case RECEIVE_TEXT:
+                new PlaySound();
+                return State.MAIN_MENU;
+
+            case RECORD_CALL:
+                if(calling.b){
+                    RecordSound.stopper.start();
+                }else{
+                    new Thread(){public void run(){new RecordSound("127.0.0.1");}}.start();
+                }
+                calling.b=!calling.b;
+                return State.MAIN_MENU;
+
+            case RECEIVE_CALL:
+                new Thread(){public void run(){new PlaySound();}}.start();
+                return State.MAIN_MENU;
+
+            case OFF:
+                return State.MAIN_MENU;//delete this line
+            case MAIN_MENU:
+            case CONTACTS_MENU:
+            case TEXTS_MENU:
+            case CALLS_MENU:
+                return state;
+        }
+        return state;
+    }
+
+    static State press1(State state, int count, String[] value){
+        switch(state) {
+            case OFF:
+                return state;
+            case MAIN_MENU:
+                return State.CALLS_MENU;
+            case CONTACTS_MENU:
+                return State.ADD_CONTACT;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+                input(1, count, value);
+                return state;
+            case TEXTS_MENU:
+                return State.WHO_TO_TEXT;
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+                input(1, count, value);
+            case RECEIVE_TEXT:
+                return state;
+            case CALLS_MENU:
+                return State.WHO_TO_CALL;
+            case WHO_TO_CALL:
+                input(1, count, value);
+            case RECORD_CALL:
+            case RECEIVE_CALL:
+            default:
+                return state;
+
+        }
+    }
+
+    static State press2(State state, int count, String[] value){
+        switch(state){
+            case OFF:
+                return state;
+            case MAIN_MENU:
+                return State.TEXTS_MENU;
+            case CONTACTS_MENU:
+                return State.REMOVE_CONTACT;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+                input(2, count, value);
+                return state;
+            case TEXTS_MENU:
+                return State.RECEIVE_TEXT;
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+                input(2, count, value);
+            case RECEIVE_TEXT:
+                return state;
+            case CALLS_MENU:
+                    return State.RECEIVE_CALL;
+            case WHO_TO_CALL:
+                input(2, count, value);
+            case RECORD_CALL:
+                return state;
+            case RECEIVE_CALL:
+                return state;
+        }
+        return state;
+    }
+
+    static State press3(State state, int count, String[] value){
+        switch(state){
+            case OFF:
+                return state;
+            case MAIN_MENU:
+                return State.CONTACTS_MENU;
+            case CONTACTS_MENU:
+                return State.MAIN_MENU;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+                input(3, count, value);
+            case TEXTS_MENU:
+                return State.MAIN_MENU;
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+                input(3, count, value);
+            case RECEIVE_TEXT:
+                return state;
+            case CALLS_MENU:
+                return State.MAIN_MENU;
+            case WHO_TO_CALL:
+                input(3, count, value);
+            case RECORD_CALL:
+                return state;
+            case RECEIVE_CALL:
+                return state;
+        }
+        return state;
+    }
+
+    static State press4(State state, int count, String[] value){
+        switch(state){
+            case OFF:
+                return state;
+            case MAIN_MENU:
+                return State.OFF;
+            case CONTACTS_MENU:
+                return state;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+                input(4, count, value);
+            case TEXTS_MENU:
+                return state;
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+                input(4, count, value);
+            case RECEIVE_TEXT:
+                return state;
+            case CALLS_MENU:
+                return state;
+            case WHO_TO_CALL:
+                input(4, count, value);
+            case RECORD_CALL:
+                return state;
+            case RECEIVE_CALL:
+                return state;
+        }
+        return state;
+    }
+
+    static void pressOther(State state, int digit, int count, String[] value){
+        switch(state){
+            case OFF:
+            case MAIN_MENU:
+            case CONTACTS_MENU:
+            case TEXTS_MENU:
+            case CALLS_MENU:
+            case RECORD_CALL:
+            case RECEIVE_CALL:
+            case RECEIVE_TEXT:
+                break;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+            case WHO_TO_CALL:
+                input(digit, count, value);
+        }
+    }
+
+    static void pressStar(State state){
+        switch(state){
+            case OFF:
+            case MAIN_MENU:
+            case CONTACTS_MENU:
+            case TEXTS_MENU:
+            case CALLS_MENU:
+            case RECORD_CALL:
+            case RECEIVE_CALL:
+                break;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+            case RECEIVE_TEXT:
+            case WHO_TO_CALL:
+                backspace();
+        }
+    }
+
+    static void pressHash(State state){
+        switch(state){
+            case OFF:
+            case MAIN_MENU:
+            case CONTACTS_MENU:
+            case TEXTS_MENU:
+            case CALLS_MENU:
+            case RECORD_CALL:
+            case RECEIVE_CALL:
+            case RECEIVE_TEXT:
+                break;
+            case ADD_CONTACT:
+            case REMOVE_CONTACT:
+            case WHO_TO_TEXT:
+            case ENTER_TEXT:
+            case WHO_TO_CALL:
+                toggle();
+                break;
+        }
+    }
+
+    private boolean validatePasscode() {
+        return false;
+    }
+
+    static void addContact(){}
+
+    static void removeContact(){}
+
+    static void backspace() {}
+
+    static void toggle(){}
+
+    /**Mustafa*/
+    static void input(int button, int count, String[] value){
+
+    }
+
+}
