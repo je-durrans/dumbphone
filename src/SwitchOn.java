@@ -4,9 +4,10 @@ import java.awt.*;
 import java.util.*;
 import java.io.*;
 
-/*The Switch On function that asks for a password and redirects to main menu
-*
-*
+/*The Switch On function that asks for a password and redirects to main menu, as well as plays hello Sound when
+*switched on, happySound and sadSound depending on whether password has been entered correctly
+*@author Kate Moksina
+*@version 1.0
 */
 
 public class SwitchOn extends JFrame implements MouseListener{
@@ -48,9 +49,8 @@ public class SwitchOn extends JFrame implements MouseListener{
        if (count != 1) { return;}
         unclick = new Date().getTime() - click;
         if (unclick >= 2000) {
-            //Ringtone.happySound();
-            //InputStreamReader in = new InputStreamReader(System.in);
-            //BufferedReader br = new BufferedReader(in);
+            Ringtone.happySound();
+            
             try {
                     if (password == null) {
                         layout.line1.setText("Set password: ");
@@ -62,10 +62,10 @@ public class SwitchOn extends JFrame implements MouseListener{
                         layout.line1.setText("Enter password: ");
                         while (!pass.equals(password)) {
                             pass = layout.line2.getText;
-                            //Ringtone.sadSound();
-                            //layout.clearLines(lines);
+                            Ringtone.sadSound();
+                            layout.clearLines(lines);
                             if (pass.equals(password)) {
-                                //Ringtone.happySound();
+                                Ringtone.happySound();
                                 layout.state=State.MAIN_MENU;
                             }
                         }
