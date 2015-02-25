@@ -87,19 +87,19 @@ public class ButtonFunctions {
                 return State.ADD_CONTACT;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
-                input(1, count, value);
-                return state;
+                return null;//input(1, count, value);
+                //return state;
             case TEXTS_MENU:
                 return State.WHO_TO_TEXT;
             case WHO_TO_TEXT:
             case ENTER_TEXT:
-                input(1, count, value);
+                return null;//input(1, count, value);
             case RECEIVE_TEXT:
                 return state;
             case CALLS_MENU:
                 return State.WHO_TO_CALL;
             case WHO_TO_CALL:
-                input(1, count, value);
+                return null;//input(1, count, value);
             case RECORD_CALL:
             case RECEIVE_CALL:
             default:
@@ -118,19 +118,18 @@ public class ButtonFunctions {
                 return State.REMOVE_CONTACT;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
-                input(2, count, value);
-                return state;
+                return null;//input(2, count, value);
             case TEXTS_MENU:
                 return State.RECEIVE_TEXT;
             case WHO_TO_TEXT:
             case ENTER_TEXT:
-                input(2, count, value);
+                return null;//input(2, count, value);
             case RECEIVE_TEXT:
                 return state;
             case CALLS_MENU:
                     return State.RECEIVE_CALL;
             case WHO_TO_CALL:
-                input(2, count, value);
+                return null;//input(2, count, value);
             case RECORD_CALL:
                 return state;
             case RECEIVE_CALL:
@@ -149,18 +148,18 @@ public class ButtonFunctions {
                 return State.MAIN_MENU;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
-                input(3, count, value);
+                return null;//input(3, count, value);
             case TEXTS_MENU:
                 return State.MAIN_MENU;
             case WHO_TO_TEXT:
             case ENTER_TEXT:
-                input(3, count, value);
+                return null;//input(3, count, value);
             case RECEIVE_TEXT:
                 return state;
             case CALLS_MENU:
                 return State.MAIN_MENU;
             case WHO_TO_CALL:
-                input(3, count, value);
+                return null;//input(3, count, value);
             case RECORD_CALL:
                 return state;
             case RECEIVE_CALL:
@@ -179,18 +178,18 @@ public class ButtonFunctions {
                 return state;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
-                input(4, count, value);
+                return null;//input(4, count, value);
             case TEXTS_MENU:
                 return state;
             case WHO_TO_TEXT:
             case ENTER_TEXT:
-                input(4, count, value);
+                return null;//input(4, count, value);
             case RECEIVE_TEXT:
                 return state;
             case CALLS_MENU:
                 return state;
             case WHO_TO_CALL:
-                input(4, count, value);
+                return null;//input(4, count, value);
             case RECORD_CALL:
                 return state;
             case RECEIVE_CALL:
@@ -199,78 +198,54 @@ public class ButtonFunctions {
         return state;
     }
 
-    static void pressOther(State state, int digit, int count, String[] value){
+    static boolean pressOther(State state, int digit, int count, String[] value){
         switch(state){
-            case OFF:
-            case MAIN_MENU:
-            case CONTACTS_MENU:
-            case TEXTS_MENU:
-            case CALLS_MENU:
-            case RECORD_CALL:
-            case RECEIVE_CALL:
-            case RECEIVE_TEXT:
-                break;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
             case WHO_TO_TEXT:
             case ENTER_TEXT:
             case WHO_TO_CALL:
-                input(digit, count, value);
+                return true;//input(digit, count, value);
         }
+        return false;
     }
 
-    static void pressStar(State state){
+    static boolean pressStar(State state){
         switch(state){
-            case OFF:
-            case MAIN_MENU:
-            case CONTACTS_MENU:
-            case TEXTS_MENU:
-            case CALLS_MENU:
-            case RECORD_CALL:
-            case RECEIVE_CALL:
-                break;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
             case WHO_TO_TEXT:
             case ENTER_TEXT:
             case RECEIVE_TEXT:
             case WHO_TO_CALL:
-                backspace();
+                return true;//backspace();
         }
+        return false;
     }
 
-    static void pressHash(State state){
+    static boolean pressHash(State state){
         switch(state){
-            case OFF:
-            case MAIN_MENU:
-            case CONTACTS_MENU:
-            case TEXTS_MENU:
-            case CALLS_MENU:
-            case RECORD_CALL:
-            case RECEIVE_CALL:
-            case RECEIVE_TEXT:
-                break;
             case ADD_CONTACT:
             case REMOVE_CONTACT:
             case WHO_TO_TEXT:
             case ENTER_TEXT:
             case WHO_TO_CALL:
-                toggle();
-                break;
+                return true;//toggle()
         }
+        return false;
     }
 
     private boolean validatePasscode() {
-        return false;
+        return true;
     }
 
     static void addContact(){}
 
     static void removeContact(){}
 
-    static void backspace() {}
+    //static void backspace() {}
 
-    static void toggle(){}
+    //static void toggle(){}
 
     /**Mustafa*/
     static void input(int button, int count, String[] value){
