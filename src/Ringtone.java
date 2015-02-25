@@ -5,14 +5,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
-/**
-* A class playing sound depending on the Event that called it
-* 
-* @author Kate Moksina
-* @editor Luke Simmons
-* @version 1.0
-*/
-
 public class Ringtone {
     
     /*
@@ -23,13 +15,11 @@ public class Ringtone {
     final static String happySound = "HappySound.wav";
     final static String sadSound = "SadSound.wav";
     final static String tritone = "Tritone.wav";
+    final static String helloSound = "HelloSound.wav";
+    final static String goodbyeSound = "GoodbyeSound.wav";
     final static int buffer_size = 128000;
     
-    /*
-     * This method plays the phone's ringtone.
-     */
-    
-    public static void ringtone() {
+    public static void ringtone() {  //This method plays the phone's ringtone.
         
         try {
             
@@ -63,11 +53,7 @@ public class Ringtone {
         }
     }
     
-    /*
-     * This method plays the phone's happy sound.
-     */
-    
-    public static void happySound() {
+    public static void happySound() {  //This method plays the phone's happy sound.
         
         try {
             
@@ -101,11 +87,7 @@ public class Ringtone {
         }
     }
     
-    /*
-     * This method plays the phone's sad sound.
-     */
-    
-    public static void sadSound() {
+    public static void sadSound() {  //This method plays the phone's sad sound.
         
         try {
             
@@ -139,15 +121,79 @@ public class Ringtone {
         }
     }
     
-    /*
-     * This method plays the phone's tritone.
-     */
-    
-    public static void tritone() {
+    public static void tritone() {  //This method plays the phone's tritone.
         
         try {
             
             File audioFile = new File( tritone );
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream( audioFile );
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info( SourceDataLine.class, audioFormat );
+            SourceDataLine sourceLine = ( SourceDataLine ) AudioSystem.getLine( info );
+            sourceLine.open( audioFormat );
+            sourceLine.start();
+            byte[] audioBuffer = new byte[ buffer_size ];
+            int n = 0;
+            
+            while ( n != -1 ) {
+                
+                n = audioInputStream.read( audioBuffer, 0, audioBuffer.length );
+                
+                if ( n >= 0 ) {
+                    sourceLine.write( audioBuffer, 0, n );
+                }
+            }
+            
+        sourceLine.drain();
+        sourceLine.close();
+        
+        } catch ( Exception e ) {
+            
+            e.printStackTrace();
+            System.exit( 1 );
+            
+        }
+    }
+    
+    public static void helloSound() {  //This method plays the phone's hello sound.
+        
+        try {
+            
+            File audioFile = new File( helloSound );
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream( audioFile );
+            AudioFormat audioFormat = audioInputStream.getFormat();
+            DataLine.Info info = new DataLine.Info( SourceDataLine.class, audioFormat );
+            SourceDataLine sourceLine = ( SourceDataLine ) AudioSystem.getLine( info );
+            sourceLine.open( audioFormat );
+            sourceLine.start();
+            byte[] audioBuffer = new byte[ buffer_size ];
+            int n = 0;
+            
+            while ( n != -1 ) {
+                
+                n = audioInputStream.read( audioBuffer, 0, audioBuffer.length );
+                
+                if ( n >= 0 ) {
+                    sourceLine.write( audioBuffer, 0, n );
+                }
+            }
+            
+        sourceLine.drain();
+        sourceLine.close();
+        
+        } catch ( Exception e ) {
+            
+            e.printStackTrace();
+            System.exit( 1 );
+            
+        }
+    }
+    
+    public static void goodbyeSound() {  //This method plays the phone's goodbye sound.
+        
+        try {
+            
+            File audioFile = new File( goodbyeSound );
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream( audioFile );
             AudioFormat audioFormat = audioInputStream.getFormat();
             DataLine.Info info = new DataLine.Info( SourceDataLine.class, audioFormat );
