@@ -11,8 +11,11 @@ public class RecordSound {
     final static int AUDIO_BUFFER_SIZE = 128000;
     public static Thread stopper;
     static boolean stopCondition = false;
+    static String HOST = "127.0.0.1";
+    final static int PORT = 7777;
 
-    RecordSound(){
+    public RecordSound(String host){
+        HOST = host;
         try{
             stopper = new Thread(){
                 @Override
@@ -20,8 +23,7 @@ public class RecordSound {
                     stopCondition=true;
                 }
             };
-            stopper.start();
-            Socket s = new Socket("127.0.0.1", 7777);
+            Socket s = new Socket(HOST, PORT);
             OutputStream out = s.getOutputStream();
             AudioFormat audioFormat = new AudioFormat(8000.0f, 16, 1, true ,true);
             DataLine.Info info = new DataLine.Info(TargetDataLine.class, audioFormat);
@@ -50,7 +52,6 @@ public class RecordSound {
             out.close();
         }catch(ConnectException e) {
             System.out.println("Sad noise");
-            System.exit(1);
         }catch(Exception e){
             e.printStackTrace();
             System.exit(1);
