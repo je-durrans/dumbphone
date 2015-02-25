@@ -1,5 +1,5 @@
 /**
- * Write a description of class MainMenu here.
+ * This class has all the methods used to display the appropriate screen on each menu and action taken.
  * 
  * @author Luke Simmons 
  * @version 23/02/2015
@@ -8,8 +8,6 @@
 public class ScreenDisplay {
         
     BasicLayoutInput screen = new BasicLayoutInput();
-
-    
     
     void setPasscodeDisplay() {  //Display shown when setting the passcode.
         
