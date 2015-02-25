@@ -5,6 +5,8 @@ import java.util.*;
 import java.io.*;
 
 /**
+* OLD
+* 
 * A class that switches on the phone if OK button is held down for over 2 seconds
 * It then plays happySoud and asks to Set/Enter password, depending on whether
 * the password has already been set.
