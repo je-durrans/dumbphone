@@ -11,67 +11,67 @@ import java.io.*;
 */
 
 public class SwitchOn implements MouseListener{
-   //private static TextField line1 = new TextField();
-   //public static JButton ok_buttn = new JButton("OK");
-   public long click;
-   public long unclick;
-   String password;
-   String pass;
-   BasicLayout layout;
-   int count=0;
-   public SwitchOn(BasicLayout layout) {
-       this.layout = layout; 
+    //private static TextField line1 = new TextField();
+    //public static JButton ok_buttn = new JButton("OK");
+    public long click;
+    public long unclick;
+    String password;
+    String pass;
+    BasicLayout layout;
+    int count=0;
+    public SwitchOn(BasicLayout layout) {
+        this.layout = layout;
         layout.ok_buttn.addMouseListener( this );
-   }
-   
+    }
 
-   public static void main(String[] args){
-       BasicLayout b = new BasicLayout();
-       SwitchOn window = new SwitchOn(b);
-   }
 
-   public void mouseClicked(MouseEvent e) {
-        }
+    public static void main(String[] args){
+        BasicLayout b = new BasicLayout();
+        SwitchOn window = new SwitchOn(b);
+    }
 
-   public void mousePressed(MouseEvent e) {
-       click = System.currentTimeMillis();
-       count++;
-      }
+    public void mouseClicked(MouseEvent e) {
+    }
 
-   public void mouseReleased(MouseEvent e) {
-       if (count != 1) { return;}
+    public void mousePressed(MouseEvent e) {
+        click = System.currentTimeMillis();
+        count++;
+    }
+
+    public void mouseReleased(MouseEvent e) {
+        if (count != 1) { return;}
         unclick = new Date().getTime() - click;
         if (unclick >= 2000) {
             Ringtone.happySound();
-            
+
             try {
-                    if (password == null) {
-                        layout.line1.setText("Set password: ");
-                        layout.line2.setText(input);
-                        while (count !=2) {}
-                        password = layout.line2.getText();
-                        layout.state=State.MAIN_MENU;
-                    } else {
-                        layout.line1.setText("Enter password: ");
-                        while (!pass.equals(password)) {
-                            layout.line2.setText(input);
-                            while(count !=2) {}
-                            pass = layout.line2.getText;
-                            Ringtone.sadSound();
-                            layout.clearLines(lines);
-                            if (pass.equals(password)) {
-                                Ringtone.happySound();
-                                layout.state=State.MAIN_MENU;
-                            }
+                if (password == null) {
+                    layout.line1.setText("Set password: ");
+                    layout.line2.setText(layout.input);
+                    while (count !=2) {}
+                    password = layout.line2.getText();
+                    layout.state=State.MAIN_MENU;
+                } else {
+                    layout.line1.setText("Enter password: ");
+                    while (!pass.equals(password)) {
+                        layout.line2.setText(layout.input);
+                        while(count !=2) {}
+                        pass = layout.line2.getText();
+                        Ringtone.sadSound();
+                        layout.clearLines(layout.lines);
+                        if (pass.equals(password)) {
+                            Ringtone.happySound();
+                            layout.state=State.MAIN_MENU;
                         }
                     }
+                }
             } catch(IOException ex) {}
         }
-   }
+    }
 
-   public void mouseEntered(MouseEvent e) {
-      }
+    public void mouseEntered(MouseEvent e) {
+    }
 
-   public void mouseExited(MouseEvent e) {
-      }
+    public void mouseExited(MouseEvent e) {
+    }
 }
