@@ -1,10 +1,3 @@
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import java.util.ArrayList;
-
 /**
  * Write a description of class MainMenu here.
  * 
@@ -12,11 +5,13 @@ import java.util.ArrayList;
  * @version 23/02/2015
  */
 
-public class DrawScreen {
+public class ScreenDisplay {
         
     BasicLayoutInput screen = new BasicLayoutInput();
 
-    void setPasscodeDisplay() {
+    
+    
+    void setPasscodeDisplay() {  //Display shown when setting the passcode.
         
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
@@ -24,7 +19,7 @@ public class DrawScreen {
         
     }
 
-    void enterPasscodeDisplay() {
+    void enterPasscodeDisplay() {  //Display shown when entering the passcode.
         
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
@@ -32,7 +27,7 @@ public class DrawScreen {
         
     }
 
-    void mainMenuDisplay() {
+    void mainMenuDisplay() {  //Display shown when at the main menu.
         
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
@@ -43,7 +38,7 @@ public class DrawScreen {
         
     }
 
-    void contactsMenuDisplay() {
+    void contactsMenuDisplay() {  //Display shown when at the contacts menu.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
@@ -53,7 +48,7 @@ public class DrawScreen {
         
     }
 
-    void addContactDisplay() {
+    void addContactDisplay() {  //Display shown when adding a contact.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
@@ -62,7 +57,7 @@ public class DrawScreen {
     
     }
 
-    void removeContactDisplay() {
+    void removeContactDisplay() {  //Display shown when removing a contact.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
@@ -70,7 +65,7 @@ public class DrawScreen {
         
     }
 
-    void textsMenuDisplay() {
+    void textsMenuDisplay() {  //Display shown when at the texting menu.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
@@ -80,7 +75,7 @@ public class DrawScreen {
         
     }
 
-    void whoTextDisplay() {
+    void whoTextDisplay() {  //Display shown when asked who to text.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
@@ -89,7 +84,7 @@ public class DrawScreen {
     
     }
 
-    void enterTextDisplay() {
+    void enterTextDisplay() {  //Display shown when entering the text contents.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
@@ -97,14 +92,14 @@ public class DrawScreen {
     
     }
 
-    void receiveTextDisplay() {
+    void receiveTextDisplay() {  //Display shown when accessing a text.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
     
     }
 
-    void callsMenuDisplay() {
+    void callsMenuDisplay() {  //Display shown when at the calls menu.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("123");
@@ -114,7 +109,7 @@ public class DrawScreen {
         
     }
 
-    void whoCallDisplay() {
+    void whoCallDisplay() {  //Display shown when asked who to call.
     
         BasicLayoutInput.clearLines(screen.lines);
         screen.line1.setText("abc");
@@ -123,13 +118,13 @@ public class DrawScreen {
         
     }
 
-    void receiveCallDisplay() {
+    void receiveCallDisplay() {  //Display shown when answering a call.
     
         BasicLayoutInput.clearLines(screen.lines);
     
     }
     
-    void switchOffDisplay() {
+    void switchOffDisplay() {  //Display shown when switching off the phone.
         
         BasicLayoutInput.clearLines(screen.lines);
         
