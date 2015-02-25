@@ -10,7 +10,7 @@ import java.io.*;
 *@version 1.0
 */
 
-public class SwitchOn extends JFrame implements MouseListener{
+public class SwitchOn implements MouseListener{
    //private static TextField line1 = new TextField();
    //public static JButton ok_buttn = new JButton("OK");
    public long click;
@@ -21,14 +21,7 @@ public class SwitchOn extends JFrame implements MouseListener{
    int count=0;
    public SwitchOn(BasicLayout layout) {
        this.layout = layout; 
-       setTitle( "test" );
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        setSize( 500, 400 );
-        setResizable(true);
-        setLocation( 300, 300 );
         layout.ok_buttn.addMouseListener( this );
-        setVisible( true );
-        setLayout(null);
    }
    
 
@@ -61,6 +54,8 @@ public class SwitchOn extends JFrame implements MouseListener{
                     } else {
                         layout.line1.setText("Enter password: ");
                         while (!pass.equals(password)) {
+                            layout.line2.setText(input);
+                            while(count !=2) {}
                             pass = layout.line2.getText;
                             Ringtone.sadSound();
                             layout.clearLines(lines);
