@@ -4,7 +4,12 @@ import java.awt.*;
 import java.util.*;
 import java.io.*;
 
-public class S extends JFrame implements MouseListener{
+/*The Switch On function that asks for a password and redirects to main menu
+*
+*
+*/
+
+public class SwitchOn extends JFrame implements MouseListener{
    //private static TextField line1 = new TextField();
    //public static JButton ok_buttn = new JButton("OK");
    public long click;
@@ -13,7 +18,7 @@ public class S extends JFrame implements MouseListener{
    String pass;
    BasicLayout layout;
    int count=0;
-   public S(BasicLayout layout) {
+   public SwitchOn(BasicLayout layout) {
        this.layout = layout; 
        setTitle( "test" );
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -28,7 +33,7 @@ public class S extends JFrame implements MouseListener{
 
    public static void main(String[] args){
        BasicLayout b = new BasicLayout();
-       S window = new S(b);
+       SwitchOn window = new SwitchOn(b);
    }
 
    public void mouseClicked(MouseEvent e) {
