@@ -243,13 +243,4 @@ public class ButtonFunctions {
 
     static void removeContact(){}
 
-    //static void backspace() {}
-
-    //static void toggle(){}
-
-    /**Mustafa*/
-    static void input(int button, int count, String[] value){
-
-    }
-
 }
