@@ -15,8 +15,7 @@ import java.util.ArrayList;
  */
 public class BasicLayout {
 
-    static State state = State.OFF;
-    int kbState = 0;
+    State state = State.OFF;
     boolean passcodeSet = false;
     boolean target_is_name = true;
     //SwitchOn s = new SwitchOn(System.currentTimeMillis());
@@ -84,16 +83,14 @@ public class BasicLayout {
         //adding the event listeners to buttons
         ok_buttn.addActionListener( new ActionListener() {
             public void actionPerformed( ActionEvent ev ) {
-                //if(state==State.OFF){
-                //do switchOn thing
-                //long pressedTime = System.currentTimeMillis();
-                //new SwitchOn(pressedTime);
-                //}else{
+                if(!(state==State.OFF)){
                 state = ButtonFunctions.pressOK(state);
                 display();
-                //}
+                }
             }
-        } );
+        });
+
+        SwitchOn s = new SwitchOn(this);
 
         buttn_1.addActionListener( new ActionListener() {
             private int count = 0;
