@@ -90,7 +90,7 @@ public class Display {
     }
 
     static void enterTextDisplay(BasicLayout screen) {  //Display shown when entering the text contents.
-        //BasicLayout.inputType = "abc";
+        BasicLayout.inputType = "abc";
         
         screen.line1.setText(BasicLayout.inputType);
         screen.line2.setText("Enter text:" + " " + BasicLayout.input);
@@ -123,7 +123,7 @@ public class Display {
     static void whoCallDisplay(BasicLayout screen) {  //Display shown when asked who to call.
         BasicLayout.inputType = "abc";
         
-        screen.line1.setText("Should be abc" + " " + BasicLayout.inputType);
+        screen.line1.setText(BasicLayout.inputType);
         screen.line2.setText("Enter name" + " " + BasicLayout.input);
         screen.line3.setText("Enter number");
         screen.line4.setText("");
