@@ -8,9 +8,10 @@
 public class Display {
 
     static void setPasscodeDisplay(BasicLayout screen) {  //Display shown when setting the passcode.
-
-        screen.line1.setText("123");
-        screen.line2.setText("Set passcode");
+        BasicLayout.inputType = "123";
+        
+        screen.line1.setText(BasicLayout.inputType);
+        screen.line2.setText("Set passcode" + " " + BasicLayout.input);
         screen.line3.setText("");
         screen.line4.setText("");
         screen.line5.setText("");
@@ -18,9 +19,10 @@ public class Display {
     }
 
     static void enterPasscodeDisplay(BasicLayout screen) {  //Display shown when entering the passcode.
-
-        screen.line1.setText("123");
-        screen.line2.setText("Enter passcode");
+        BasicLayout.inputType = "123";
+        
+        screen.line1.setText(BasicLayout.inputType);
+        screen.line2.setText("Enter passcode" + " " + BasicLayout.input);
         screen.line3.setText("");
         screen.line4.setText("");
         screen.line5.setText("");
@@ -48,10 +50,11 @@ public class Display {
     }
 
     static void addContactDisplay(BasicLayout screen) {  //Display shown when adding a contact.
-
-        screen.line1.setText("abc");
-        screen.line2.setText("Enter name");
-        screen.line3.setText("Enter number");
+        BasicLayout.inputType = "abc";
+        
+        screen.line1.setText(BasicLayout.inputType);
+        screen.line2.setText("Enter name:" + " " + BasicLayout.input );
+        screen.line3.setText("Enter number:");
         screen.line4.setText("");
         screen.line5.setText("");
         
@@ -59,9 +62,10 @@ public class Display {
     }
 
     static void removeContactDisplay(BasicLayout screen) {  //Display shown when removing a contact.
-
+        BasicLayout.inputType = "abc";
+        
         screen.line1.setText("abc");
-        screen.line2.setText("Enter name");
+        screen.line2.setText("Enter name" + " " + BasicLayout.input);
 
     }
 
@@ -75,9 +79,10 @@ public class Display {
     }
 
     static void whoTextDisplay(BasicLayout screen) {  //Display shown when asked who to text.
-
+        BasicLayout.inputType = "abc";
+        
         screen.line1.setText("abc");
-        screen.line2.setText("Enter name");
+        screen.line2.setText("Enter name:" + " " + BasicLayout.input);
         screen.line3.setText("Enter number");
         screen.line4.setText("");
         screen.line5.setText("");
@@ -85,9 +90,10 @@ public class Display {
     }
 
     static void enterTextDisplay(BasicLayout screen) {  //Display shown when entering the text contents.
-
-        screen.line1.setText("abc");
-        screen.line2.setText("Enter text");
+        //BasicLayout.inputType = "abc";
+        
+        screen.line1.setText(BasicLayout.inputType);
+        screen.line2.setText("Enter text:" + " " + BasicLayout.input);
         screen.line3.setText("");
         screen.line4.setText("");
         screen.line5.setText("");
@@ -115,9 +121,10 @@ public class Display {
     }
 
     static void whoCallDisplay(BasicLayout screen) {  //Display shown when asked who to call.
-
-        screen.line1.setText("abc");
-        screen.line2.setText("Enter name");
+        BasicLayout.inputType = "abc";
+        
+        screen.line1.setText("Should be abc" + " " + BasicLayout.inputType);
+        screen.line2.setText("Enter name" + " " + BasicLayout.input);
         screen.line3.setText("Enter number");
         screen.line4.setText("");
         screen.line5.setText("");
