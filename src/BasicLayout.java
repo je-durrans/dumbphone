@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Very basic layout of the interface of the 'dumb phone'. Provides all the elements required
@@ -56,7 +57,7 @@ public class BasicLayout {
     final static TextField line4 = new TextField();  
     final static TextField line5 = new TextField();  
     
-    final ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
+    final static ArrayList<TextField> lines = new ArrayList<TextField>(); //an array to store the lines
     
     //declaring the buttons
     final JButton ok_buttn = new JButton( "OK" );
@@ -131,51 +132,18 @@ public class BasicLayout {
         } );
 
         buttn_2.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count2 = new AtomicInteger(0);
             private String[] values2 = { "A", "B", "C", "a" , "b", "c", "2"};
         
             public void actionPerformed( ActionEvent ev ) {
                 State newState = ButtonFunctions.press2(state);
                 if (newState == null) {
+                    
+                    
                     clearLines(lines);
                     lastClick1 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-            
-                    if (now - lastClick2 < 2000) {
-                        count++;
-                
-                        if (inputType.equals("ABC")) {
-                            if (count >= 3) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 6) {
-                                count = 3;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values2.length) {
-                                count = 6;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values2[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 3;
-
-                        } else if (inputType.equals("123")) {
-                            count = 6;
-                        }
-                
-                        input += values2[count];
-                   }
-            
-                    lastClick2 = System.currentTimeMillis();
+                    input( lastClick2, values2, count2 );
+                    lastClick2 = System.currentTimeMillis(); 
          
                 } else { state = newState; }
             
@@ -184,47 +152,15 @@ public class BasicLayout {
         } );
 
         buttn_3.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count3 = new AtomicInteger(0);
             private String[] values3 = { "D", "E", "F", "d" , "e", "f", "3"};
             public void actionPerformed( ActionEvent ev ) { 
                 State newState = ButtonFunctions.press3(state);
                 if (newState == null) {
                     clearLines(lines);
-                    lastClick1 = 10000; lastClick2 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-                    if (now - lastClick3 < 2000) {
-                        count++;
-           
-                        if (inputType.equals("ABC")) {
-                            if (count >= 3) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 6) {
-                                count = 3;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values3.length) {
-                                count = 6;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values3[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-                         } else if (inputType.equals("abc")) {
-                            count = 3;
-                         } else if (inputType.equals("123")) {
-                            count = 6;
-                         }
-              
-                         input += values3[count];
-                    }
-                
-                        lastClick3 = System.currentTimeMillis();
+                    lastClick1 = 10000; lastClick2 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000; 
+                    input(lastClick3, values3, count3);
+                    lastClick3 = System.currentTimeMillis();
                 
                 } else { state = newState; }
                
@@ -233,49 +169,15 @@ public class BasicLayout {
         } );
 
         buttn_4.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count4 = new AtomicInteger(0);
             private String[] values4 = { "G", "H", "I" , "g" , "h" , "i", "4" };
+            
             public void actionPerformed( ActionEvent ev ) {
                 State newState = ButtonFunctions.press4(state);
                 if (newState == null) {
                     clearLines(lines);
                     lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-                    if (now - lastClick4 < 2000) {
-                        count++;
-                
-                         if (inputType.equals("ABC")) {
-                            if (count >= 3) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 6) {
-                                count = 3;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values4.length) {
-                                count = 6;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values4[count];
-                        
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 3;
-
-                        } else if (inputType.equals("123")) {
-                            count = 6;
-                        }
-                        
-                        input += values4[count];
-                    }
-                
+                    input(lastClick4, values4, count4);
                     lastClick4 = System.currentTimeMillis();
                 
                 } else { state = newState; }
@@ -285,50 +187,14 @@ public class BasicLayout {
         } );
 
         buttn_5.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count5 = new AtomicInteger(0);
             private String[] values5 = { "J", "K", "L" , "j" , "k" , "l", "5" };
             public void actionPerformed( ActionEvent ev ) {
                 boolean newState = ButtonFunctions.pressOther(state);
                 if (newState) { 
                     clearLines(lines);
                     lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-            
-                    if (now - lastClick5 < 2000) {
-                        count++;
-                
-                        if (inputType.equals("ABC")) {
-                            if (count >= 3) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 6) {
-                                count = 3;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values5.length) {
-                                count = 6;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values5[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 3;
-
-                        } else if (inputType.equals("123")) {
-                            count = 6;
-                        }
-
-                
-                       input += values5[count];
-                    } 
-                    
+                    input(lastClick5, values5, count5);
                     lastClick5 = System.currentTimeMillis();
                     
                 } else { ButtonFunctions.pressOther( state ); }
@@ -338,49 +204,14 @@ public class BasicLayout {
         } );
 
         buttn_6.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count6 = new AtomicInteger(0);
             private String[] values6 = { "M", "N", "O", "m", "n", "o", "6"};
             public void actionPerformed( ActionEvent ev ) {
                 boolean newState = ButtonFunctions.pressOther( state );
                 if (newState) { 
                     clearLines(lines);
                     lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-            
-                    if (now - lastClick6 < 2000) {
-                        count++;
-                
-                         if (inputType.equals("ABC")) {
-                            if (count >= 3) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 6) {
-                                count = 3;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values6.length) {
-                                count = 6;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values6[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 3;
-
-                        } else if (inputType.equals("123")) {
-                            count = 6;
-                        }
-                
-                       input += values6[count];
-                    } 
-                    
+                    input(lastClick6, values6, count6);
                     lastClick6 = System.currentTimeMillis();
                     
                 } else { ButtonFunctions.pressOther( state ); }
@@ -390,49 +221,15 @@ public class BasicLayout {
         } );
 
         buttn_7.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count7 = new AtomicInteger(0);
             private String[] values7 = { "P", "Q", "R", "S", "p", "q", "r", "s", "7"};
             public void actionPerformed( ActionEvent ev ) {
                 boolean newState = ButtonFunctions.pressOther( state );
                 if (newState) { 
                     clearLines(lines);
                     lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick8 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-                    if (now - lastClick7 < 2000) {
-                        count++;
-            
-                        if (inputType.equals("ABC")) {
-                            if (count >= 4) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 8) {
-                                count = 4;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values7.length) {
-                                count = 8;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values7[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 4;
-
-                        } else if (inputType.equals("123")) {
-                            count = 8;
-                        }
-            
-                       input += values7[count];
-                   }
-        
-                   lastClick7 = System.currentTimeMillis();
+                    input(lastClick7, values7, count7);
+                    lastClick7 = System.currentTimeMillis();
                    
                  } else { ButtonFunctions.pressOther(state); }
                  
@@ -441,7 +238,7 @@ public class BasicLayout {
         } );
 
         buttn_8.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count8 = new AtomicInteger(0);
             private String[] values8 = { "T", "U", "V" , "t" , "u", "v", "8"};
             
             public void actionPerformed( ActionEvent ev ) {
@@ -449,41 +246,7 @@ public class BasicLayout {
                 if (newState) {
                     clearLines(lines);
                     lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick9 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-                    if (now - lastClick8 < 2000) {
-                        count++;
-            
-                        if (inputType.equals("ABC")) {
-                            if (count >= 3) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 6) {
-                                count = 3;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values8.length) {
-                                count = 6;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values8[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 3;
-
-                        } else if (inputType.equals("123")) {
-                            count = 6;
-                        }
-            
-                        input += values8[count];
-                   }
-              
+                   input(lastClick8, values8, count8);
                    lastClick8 = System.currentTimeMillis();
                } else { ButtonFunctions.pressOther( state ); }
                
@@ -492,49 +255,14 @@ public class BasicLayout {
         } );
 
         buttn_9.addActionListener( new ActionListener() {
-            private int count = 0;
+            private AtomicInteger count9 = new AtomicInteger(0);
             private String[] values9 = { "W", "X", "Y", "Z", "w", "x", "y", "z", "9"};
             public void actionPerformed( ActionEvent ev ) {
                 boolean newState = ButtonFunctions.pressOther( state );
                 if (newState) {
                     clearLines(lines);
-                    lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick0 = 10000;  
-                    long now = System.currentTimeMillis();
-                
-                    if (now - lastClick9 < 2000) {
-                        count++;
-            
-                         if (inputType.equals("ABC")) {
-                            if (count >= 4) {
-                                count = 0;
-                            }
-
-                        } else if (inputType.equals("abc")) {
-                            if (count >= 8) {
-                                count = 4;
-                            }
-
-                        } else if (inputType.equals("123")) {
-                            if (count >= values9.length) {
-                                count = 8;
-                            }
-                        }
-
-                        input = input.substring(0, (input.length() - 1)) + values9[count];
-                    } else {
-                        if (inputType.equals("ABC")) {
-                            count = 0;
-
-                        } else if (inputType.equals("abc")) {
-                            count = 4;
-
-                        } else if (inputType.equals("123")) {
-                            count = 8;
-                        }
-                        
-                        input += values9[count];
-                    }
-               
+                    lastClick1 = 10000; lastClick2 = 10000; lastClick3 = 10000; lastClick4 = 10000; lastClick5 = 10000; lastClick6 = 10000; lastClick7 = 10000; lastClick8 = 10000; lastClick0 = 10000; 
+                    input(lastClick9, values9, count9);
                     lastClick9 = System.currentTimeMillis();
                     
                } else { ButtonFunctions.pressOther(state); }
@@ -700,4 +428,34 @@ public class BasicLayout {
                 break;
         }
     }
+    
+    
+    public static void input( long lastClick, String[] values, AtomicInteger count ) {
+        
+        long now = System.currentTimeMillis();
+        int upperCaseBound = (values.length - 1) / 2;
+        int lowerCaseBound = values.length - 1;
+        
+        if (now - lastClick < 2000) {
+            count.addAndGet(1);
+            if (inputType.equals("ABC")) {
+            if (count.get() >= upperCaseBound){
+                count.set(0);
+            } } else if (inputType.equals("abc")) {
+                if (count.get() >= lowerCaseBound) { count.set(upperCaseBound); }
+            } else if (inputType.equals("123")) {
+                if (count.get() >= values.length) { count.set(lowerCaseBound); } 
+            }
+            input = input.substring(0, (input.length() - 1)) + values[count.get()];
+        } else {
+            if (inputType.equals("ABC")) { count.set(0); }
+            else if (inputType.equals("abc")) { count.set(upperCaseBound); }
+            else if (inputType.equals("123")) { count.set(lowerCaseBound); }
+            input += values[count.get()];
+        }
+                   
+        System.out.println(count);
+        lastClick = System.currentTimeMillis();
+                   
+             }
 }
