@@ -45,23 +45,9 @@ public class SwitchOn implements MouseListener{
                 layout.state = State.SET_PASSCODE;
                 layout.line1.setText("Set password: ");
                 layout.line2.setText(layout.input);
-                //wait for enter
-                password = layout.line2.getText();
-                layout.state = State.MAIN_MENU;
             } else {
                 layout.state = State.ENTER_PASSCODE;
                 layout.line1.setText("Enter password: ");
-                while (!pass.equals(password)) {
-                    layout.line2.setText(layout.input);
-                    //wait again
-                    pass = layout.line2.getText();
-                    //Ringtone.sadSound();
-                    layout.clearLines(layout.lines);
-                    if (pass.equals(password)) {
-                        //Ringtone.happySound();
-                        layout.state = State.MAIN_MENU;
-                    }
-                }
             }
         }
     }
