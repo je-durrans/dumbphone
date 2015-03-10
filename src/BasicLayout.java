@@ -31,6 +31,8 @@ public class BasicLayout {
     State state = State.OFF;  
     boolean passcodeSet = false;
     boolean target_is_name = true;
+    public static String password;
+
 
     
     public static String input = ""; //a string to hold the input 
