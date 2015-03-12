@@ -1,10 +1,13 @@
 /**
  * Created by John on 23/02/2015.
+ * Button functions carry out the required functionality given the state of the phone
+ * OK and buttons 1-4 also return the next state of the phone
+ * returning null indicates that the state should stay the same *and* an input method should be called
  */
 public class ButtonFunctions {
     //state = off, setPasscode, enterPasscode, mainMenu, contactsMenu, addContact, removeContact,
     //      | textsMenu, whoText, enterText, receiveText, callsMenu, whoCall, recordCall, receiveCall
-    int kbState = 0; //(0)123, (1)abc, (2)ABC
+    
     boolean passcodeSet=false;
     static BasicLayout phone = new BasicLayout();
     static boolean target_is_name = true;
