@@ -57,6 +57,7 @@ public class ButtonFunctions {
 
             case RECEIVE_TEXT:
                 new PlaySound();
+                BasicLayout.line1.setText(TextSend.content);
                 return State.MAIN_MENU;
 
             case RECORD_CALL:
