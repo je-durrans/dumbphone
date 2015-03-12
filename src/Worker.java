@@ -23,16 +23,8 @@ public class Worker implements Runnable {
   public void run() {
     try {
       InputStream  in   =  s.getInputStream();
-      OutputStream out  =  s.getOutputStream();
-
       BufferedReader reader = new BufferedReader( new InputStreamReader( in ) ); 
-      PrintWriter    writer = new PrintWriter( out );
-
       String content = reader.readLine() + "\n";
-
-      writer.print( "\r\n" );
-      writer.print( content );
-      writer.flush();
       s.close();
     } catch ( IOException e ) {
       System.out.println( e );
