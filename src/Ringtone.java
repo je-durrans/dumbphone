@@ -5,16 +5,24 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
+/**
+ * This class contains all the methods for playing all the different ringtones and sounds.
+ * 
+ * @author Kate Moksina
+ * @editor Luke Simmons
+ * @version 25/02/2015
+ */
+
 public class Ringtone {
     
     /*
      * These Strings represent the names of the files to be used in each method call.
      */
     
-    final static String ringtone = "Ringtone.wav";
+    final static String ringtoneSound = "Ringtone.wav";
     final static String happySound = "HappySound.wav";
     final static String sadSound = "SadSound.wav";
-    final static String tritone = "Tritone.wav";
+    final static String tritoneSound = "Tritone.wav";
     final static String helloSound = "HelloSound.wav";
     final static String goodbyeSound = "GoodbyeSound.wav";
     final static int buffer_size = 128000;
@@ -23,7 +31,7 @@ public class Ringtone {
         
         try {
             
-            File audioFile = new File( ringtone );
+            File audioFile = new File( ringtoneSound );
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream( audioFile );
             AudioFormat audioFormat = audioInputStream.getFormat();
             DataLine.Info info = new DataLine.Info( SourceDataLine.class, audioFormat );
@@ -125,7 +133,7 @@ public class Ringtone {
         
         try {
             
-            File audioFile = new File( tritone );
+            File audioFile = new File( tritoneSound );
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream( audioFile );
             AudioFormat audioFormat = audioInputStream.getFormat();
             DataLine.Info info = new DataLine.Info( SourceDataLine.class, audioFormat );
