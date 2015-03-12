@@ -12,7 +12,7 @@ import java.net.Socket;
 public class TextReceive {
   public final static int PORT = 8888;
 
-  public static void main( String[] argv )
+  public TextReceive()
     throws IOException {
     ServerSocket ss = new ServerSocket( PORT );
 
