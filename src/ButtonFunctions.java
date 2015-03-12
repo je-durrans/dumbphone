@@ -29,9 +29,11 @@ public class ButtonFunctions {
             case WHO_TO_TEXT:
             case WHO_TO_CALL:
                 if(target_is_name){
+                    BasicLayout.line1InputDone();
                     target_is_name=false;
                     return state;
                 }else{
+                    BasicLayout.line2InputDone();
                     target_is_name=true;
                     switch(state){
                         case ADD_CONTACT:
