@@ -64,11 +64,11 @@ public class ButtonFunctions {
                 calling.b=!calling.b;
                 return State.MAIN_MENU;
 
-            case SET_PASSWORD:
+            case SET_PASSCODE:
                 password = layout.line2.getText();
                 return State.MAIN_MENU;
 
-            case ENTER_PASSCODE;
+            case ENTER_PASSCODE:
                        pass = layout.line2.getText();
                        if (!pass.equals(password)) {
                            Ringtone.sadSound();
