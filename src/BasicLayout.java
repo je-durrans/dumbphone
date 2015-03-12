@@ -411,30 +411,28 @@ public class BasicLayout {
      */
     public static void input( long lastClick, String[] values, AtomicInteger count ) {
         long now = System.currentTimeMillis();
-        int upperCaseBound = (values.length - 1) / 2;
-        int lowerCaseBound = values.length - 1;
+        int upperCaseBound = (values.length - 1) / 2; //upper case characters are at the first 3 or 4 indexes
+        int lowerCaseBound = values.length - 1; //lower case characters are between the indexes of upper case bound and the last numerical character
         
         if (now - lastClick < 2000) { //if the button is pressed again in two seconds, return the next character held by the key
-            count.addAndGet(1);
+            count.addAndGet(1); //increment the count variable so that the next character held by the key can be used to replace what was input before.
             if (inputType.equals("ABC")) {
-            if (count.get() >= upperCaseBound){
+            if (count.get() >= upperCaseBound){ //keeps the variable within the bounds of the upper case characters
                 count.set(0);
             } } else if (inputType.equals("abc")) {
-                if (count.get() >= lowerCaseBound) { count.set(upperCaseBound); }
+                if (count.get() >= lowerCaseBound) { count.set(upperCaseBound); } //keeps the variable within the bounds of the lower case characters (upperCaseBound is where the lower case characters start)
             } else if (inputType.equals("123")) {
-                if (count.get() >= values.length) { count.set(lowerCaseBound); } 
+                if (count.get() >= values.length) { count.set(lowerCaseBound); } //keeps the variable's value at the index of the numerical key
             }
-            input = input.substring(0, (input.length() - 1)) + values[count.get()];
-        } else {
-            if (inputType.equals("ABC")) { count.set(0); }
+            input = input.substring(0, (input.length() - 1)) + values[count.get()]; //if the button is pressed again, do not add a new character to the input, but change the previous one with the next character 
+                                                                                    //held by the key, using the count variable
+        } else { //the button is pressed for the first time (or after 2 seconds), initiate the count variable according to the input type and add the first character of that type.
+            if (inputType.equals("ABC")) { count.set(0); } 
             else if (inputType.equals("abc")) { count.set(upperCaseBound); }
             else if (inputType.equals("123")) { count.set(lowerCaseBound); }
             input += values[count.get()];
         }
-                   
-        System.out.println(count);
-        lastClick = System.currentTimeMillis();
-                   
+                                      
              }
     
     /**
