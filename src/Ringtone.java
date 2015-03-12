@@ -27,7 +27,7 @@ public class Ringtone {
     final static String goodbyeSound = "GoodbyeSound.wav";
     final static int buffer_size = 128000;
     
-    public static void ringtone() {  //This method plays the phone's ringtone.
+    public static void ringtoneSound() {  //This method plays the phone's ringtone.
         
         try {
             
@@ -129,7 +129,7 @@ public class Ringtone {
         }
     }
     
-    public static void tritone() {  //This method plays the phone's tritone.
+    public static void tritoneSound() {  //This method plays the phone's tritone.
         
         try {
             
