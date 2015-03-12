@@ -1,5 +1,7 @@
 /**
  * Created by John 03/02/15.
+ * 
+ * Receives sound data from another phone and plays that sound.
  */
 
 import java.io.BufferedInputStream;
