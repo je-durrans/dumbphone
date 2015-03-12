@@ -1,5 +1,5 @@
 /**
- * Created by John (right) on 23/02/2015.
+ * Created by John on 23/02/2015.
  */
 public enum State {
     OFF, MAIN_MENU, CONTACTS_MENU, ADD_CONTACT, REMOVE_CONTACT,
