@@ -3,18 +3,20 @@ import java.awt.event.MouseListener;
 
 /*The Switch On function that asks for a password and redirects to main menu, as well as plays hello Sound when
 *switched on, happySound and sadSound depending on whether password has been entered correctly
+*
+*mouseClicked, mouseEntered and mouseExited have to be overriden for MouseListener implementation, it won't compile otherwise
+*
 *@author Kate Moksina
 *@version 1.0
 */
 
 public class SwitchOn implements MouseListener{
-    //private static TextField line1 = new TextField();
-    //public static JButton ok_buttn = new JButton("OK");
-    public long click;
-    public long unclick;
+    public long clickTime;
+    public long unclickTime;
     String password;
     String pass;
     BasicLayout layout;
+    final int TIMER = 2000;
     int count=0;
     public SwitchOn(BasicLayout layout) {
         this.layout = layout;
@@ -31,16 +33,15 @@ public class SwitchOn implements MouseListener{
     }
 
     public void mousePressed(MouseEvent e) {
-        click = System.currentTimeMillis();
+        clickTime = System.currentTimeMillis();
         count=1;
     }
 
     public void mouseReleased(MouseEvent e) {
-        unclick = System.currentTimeMillis() - click;
-        if (unclick >= 2000) {
+        unclickTime = System.currentTimeMillis() - clickTime;
+        if (unclickTime >= TIMER) {
             layout.ok_buttn.removeMouseListener(this);
-            //Ringtone.happySound();
-
+            Ringtone.happySound();
             if (password == null) {
                 layout.state = State.SET_PASSCODE;
                 layout.line1.setText("Set password: ");
