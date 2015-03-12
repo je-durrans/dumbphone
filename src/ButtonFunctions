@@ -25,9 +25,11 @@ public class ButtonFunctions {
             case WHO_TO_TEXT:
             case WHO_TO_CALL:
                 if(target_is_name){
+                    //BasicLayout.line1InputDone();   // NEW CODE!! the current input is cleared and its previuos content is stored in a seperate new variable
                     target_is_name=false;
                     return state;
                 }else{
+                    //BasicLayout.line2InputDone();  //NEW CODE!!
                     target_is_name=true;
                     switch(state){
                         case ADD_CONTACT:
