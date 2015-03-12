@@ -6,9 +6,10 @@ public class ButtonFunctions {
     //      | textsMenu, whoText, enterText, receiveText, callsMenu, whoCall, recordCall, receiveCall
     int kbState = 0; //(0)123, (1)abc, (2)ABC
     boolean passcodeSet=false;
-    BasicLayout phone = new BasicLayout();
+    static BasicLayout phone = new BasicLayout();
     static boolean target_is_name = true;
     static Box calling = new Box();
+    static String password;
 
     /*public static void main(String[] args) {
         ButtonFunctions s = new ButtonFunctions();
@@ -25,11 +26,9 @@ public class ButtonFunctions {
             case WHO_TO_TEXT:
             case WHO_TO_CALL:
                 if(target_is_name){
-                    //BasicLayout.line1InputDone();   // NEW CODE!! the current input is cleared and its previuos content is stored in a seperate new variable
                     target_is_name=false;
                     return state;
                 }else{
-                    //BasicLayout.line2InputDone();  //NEW CODE!!
                     target_is_name=true;
                     switch(state){
                         case ADD_CONTACT:
@@ -65,11 +64,11 @@ public class ButtonFunctions {
                 return State.MAIN_MENU;
 
             case SET_PASSCODE:
-                password = layout.line2.getText();
+                password = BasicLayout.line2.getText();
                 return State.MAIN_MENU;
 
             case ENTER_PASSCODE:
-                       pass = layout.line2.getText();
+                       String pass = BasicLayout.line2.getText();
                        if (!pass.equals(password)) {
                            Ringtone.sadSound();
                            return state;
@@ -191,6 +190,8 @@ public class ButtonFunctions {
             case OFF:
                 return state;
             case MAIN_MENU:
+                BasicLayout.clearLines(BasicLayout.lines);
+                new SwitchOn(phone);
                 return State.OFF;
             case CONTACTS_MENU:
                 return state;
