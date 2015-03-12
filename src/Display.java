@@ -54,20 +54,15 @@ public class Display {
         BasicLayout.inputType = "abc";
         
         screen.line1.setText(BasicLayout.inputType);
-        /*
+        
         if (ButtonFunctions.target_is_name) {
             screen.line2.setText(">Enter name: " + BasicLayout.input);
             screen.line3.setText("Enter number: ");
-        }
-        else {
+        } else {
             screen.line2.setText("Name: " + BasicLayout.inputL1);
             screen.line3.setText( ">Enter number: " + BasicLayout.input);
         }
-        //Need this so user is prompted which field the input is being made to
-        //with this code the following two lines of code that set lines 2 and 3 wouldn't be needed
-        */
-        screen.line2.setText("Enter name:" + " " + BasicLayout.input );
-        screen.line3.setText("Enter number:");
+        
         screen.line4.setText("");
         screen.line5.setText("");
         
@@ -95,19 +90,15 @@ public class Display {
         BasicLayout.inputType = "abc";
         
         screen.line1.setText("abc");
-        /*
+        
         if (ButtonFunctions.target_is_name) {
             screen.line2.setText(">Enter name: " + BasicLayout.input);
             screen.line3.setText("Enter number:");
-        }
-        else {
+        } else {
             screen.line2.setText("To: " + BasicLayout.inputL1);
             screen.line3.setText( ">Enter number: " + BasicLayout.input);
         }
-        //Again, the following two lines of code that set lines 2 and 3 are not needed
-        */
-        screen.line2.setText("Enter name:" + " " + BasicLayout.input);
-        screen.line3.setText("Enter number");
+        
         screen.line4.setText("");
         screen.line5.setText("");
 
@@ -148,19 +139,15 @@ public class Display {
         BasicLayout.inputType = "abc";
         
         screen.line1.setText(BasicLayout.inputType);
-        /*
+        
         if (ButtonFunctions.target_is_name) {
             screen.line2.setText(">Enter name: " + BasicLayout.input);
             screen.line3.setText("Enter number:");
-        }
-        else {
+        } else {
             screen.line2.setText(BasicLayout.inputL1);
             screen.line3.setText( ">Enter number: " + BasicLayout.input);
         }
-        //Again, the following two lines of code that set lines 2 and 3 are not needed
-        */
-        screen.line2.setText("Enter name" + " " + BasicLayout.input);
-        screen.line3.setText("Enter number");
+        
         screen.line4.setText("");
         screen.line5.setText("");
 
