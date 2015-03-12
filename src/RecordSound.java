@@ -1,5 +1,7 @@
 /**
  * Created by John on 03/02/2015.
+ * 
+ * Records sound from the user and sends it to another phone.
  */
 
 import java.io.*;
